@@ -31,7 +31,7 @@ export class DatepickerComponent implements OnInit {
     let result = Math.floor(Math.abs(date2 - date1) / birgun);
     this.modelBetween = result;
     console.log(result);
-    this.carService.setRentDays(result);
+    this.carService.setRentDays(result,new Date(date1),new Date(date2));
     return result;
   }
 }

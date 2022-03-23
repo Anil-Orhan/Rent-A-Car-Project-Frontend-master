@@ -30,7 +30,7 @@
             <div class="col-8">
               <div *ngFor="let inc of insurances" class="form-check text-dark">
                 <input type="radio" class="form-check-input bg-success" id="radio1" name="optradio"
-                  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice)">
+                  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice,inc.insuranceId)">
                 <label class="form-check-label fs-6 fw-lighter" for="radio1">{{inc.insuranceName}} (Günlük +
                   <i class="text-success fw-bold"> {{inc.insuranceDailyPrice}}₺</i>)</label>
 
@@ -62,7 +62,7 @@
               </ngb-rating>
             </div>
 
-            <i *ngIf="rentDay!=0" class="fs-5 text-success ">{{ (car.dailyPrice+insurancePrice)*rentDay}} ₺<i
+            <i *ngIf="rentDay!=0"  class="fs-5 text-success ">{{ (car.dailyPrice+insurancePrice)*rentDay}} ₺<i
                 class="text-muted fs-4 fw-light"> / {{rentDay}} Gün İçin</i>
               <div class="alert alert-warning fs-6 fw-light" @fade role="alert">
                 Fiyatlar Aynı Gün İçin Geçerlidir!
@@ -180,7 +180,7 @@
     ">
           Hesapla
         </button>
-        <button routerLink="/pay" type="button" class="btn btn-success btn-lg mt-3" style="
+        <button routerLink="/pay" (click)="setRental()" type="button" class="btn btn-success btn-lg mt-3" style="
           margin-right: 3em;
           padding: 10px;
           padding-right: 30px;

@@ -6,6 +6,7 @@ import { CarComponent } from './components/car/car.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { CarimageComponent } from './components/carimage/carimage.component';
 import { MainComponent } from './components/main/main.component';
+import { PayResultComponent } from './components/pay-result/pay-result.component';
 import { PayComponent } from './components/pay/pay.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'car', component: CarComponent },
   { path: 'pay', component: PayComponent },
   { path: 'add', component: AddCarComponent },
+  { path: 'pay-result', component: PayResultComponent },
 ];
 
 @NgModule({

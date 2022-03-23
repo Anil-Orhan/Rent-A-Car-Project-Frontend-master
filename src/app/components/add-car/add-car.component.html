@@ -1,73 +1,185 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="container mt-5">
-    <h1 class="fs-1 fw-light text-center mb-5"> Araç Fotoğrafı Yükle</h1>
-
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3"></div>
+</div>
+<div class="container mt-5 fs-6 fw-light">
     <div class="row">
-        <div class="col-6">  
-            <form [formGroup]="myForm" (ngSubmit)="submit()">
+        <div class="col-9"><form [formGroup]="carForm" (ngSubmit)="submitCar()">
+            <h1 class="fs-1 fw-light text-center mb-5"> Yeni Araç Ekle</h1>
     
-                <div class="form-group">
-                    <!-- <label for="name">Name</label>
-                    <input 
-                        formControlName="name"
-                        id="name" 
-                        type="text" 
-                        class="form-control">
-                    <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-                        <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-                        <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
-                    </div> -->
-                    <!-- carID -->
-                    <label for="CarID" >Araç Seçimi Yapınız!</label> 
-                    <!-- <input 
-                        formControlName="CarID"
-                        id="CarID" 
-                        type="text" 
-                        class="form-control"> -->
-                         <!-- carID -->
-                         <select class="form-select btn btn-success"  id="CarID"   formControlName="CarID"> 
-                        
-                            <option   value="{{car.carID}}"  *ngFor="let car of cars" selected>{{car.carModel}}</option>
-                          </select>
+            <div class="row ">
+                <div class="col-6"> 
+                    <div class="mb-1">
+                        <label for="id" class="form-label">Araba ID:</label>
+                        <input type="number" class="form-control" id="id" placeholder='ID Otomatik Belirlenir ' disabled name="id">
+                      </div>
+                    <div class="mb-1">
+                    <label for="brand" class="form-label">Marka ID:</label>
+                    <input type="number "  formControlName="BrandID" class="form-control" id="brand" placeholder="Marka Kodu Giriniz" name="brand">
+                  </div>
+                  <div class="mb-1">
+                    <label for="pwd" class="form-label">Renk ID:</label>
+                    <input type="number" formControlName="ColorID" class="form-control" id="color" placeholder="Renk Kodu Giriniz" name="color">
+                  </div>
+                  <div class="mb-1">
+                    <label for="model" class="form-label">Model Yılı:</label>
+                    <input type="text" formControlName="ModelYear" class="form-control" id="model" placeholder="Model Yılı Giriniz" name="model">
+                  </div>
+                  <div class="mb-1">
+                    <label for="depositFee" class="form-label">Depozito Bedeli:</label>
+                    <input type="number" class="form-control"  formControlName="DepositFee" id="depositFee" placeholder="Depozito Bedelini Giriniz" name="depositFee">
+                  </div>
+                  <div class="mb-1">
+                    <label for="model" class="form-label">Günlük Ücret:</label>
+                    <input type="number" class="form-control"  formControlName="DailyPrice" id="model" placeholder="Günlük Ücret Giriniz" name="model">
+                  </div>
+                  <div class="mb-1">
+                    <label for="description" class="form-label">Açıklama:</label>
+                    <input type="text" class="form-control" id="description"  formControlName="Description" placeholder="Açıklama" name="description">
+                  </div>
+                  <div class="mb-1">
+                    <label for="fuelType" class="form-label">Yakıt Tipi:</label>
+                    <input type="text" class="form-control" id="fuelType"   formControlName="FuelType" placeholder="Yakıt Tipi Giriniz" name="fuelType">
+                  </div>
+                 
                 </div>
-                    
-                <div class="form-group">
-                    <label for="file">File</label>
-                    <input 
-                        formControlName="file"
-                        id="file" 
-                        type="file" 
-                        class="form-control"
-                        (change)="onFileChange($event)">
-                    <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
-                        <div *ngIf="f['file'].errors && f['file'].errors['required']">Resim Dosyası Seçilmedi!</div>
+                <div class="col-6">
+                    <div class="mb-1">
+                        <label for="kilometer" class="form-label">Kilometre:</label>
+                        <input type="number" class="form-control" id="kilometer"  formControlName="Kilometer" placeholder="Anlık Kilometre Bilgisi Giriniz" name="kilometer">
+                      </div>
+                    <div class="mb-1">
+                        <label for="transmission" class="form-label">Vites Tipi:</label>
+                        <input type="text" class="form-control" id="transmission" formControlName="Transmission"  placeholder="Vites Tipi Bilgisi Giriniz" name="transmission">
                     </div>
+                    <div class="mb-1">
+                        <label for="engineCapacity" class="form-label">Motor Hacmi:</label>
+                        <input type="text" class="form-control" id="engineCapacity" formControlName="EngineCapacity"  placeholder="Motor Hacmi Giriniz" name="engineCapacity">
+                    </div>
+                    <div class="mb-1">
+                        <label for="bodyType" class="form-label">Araç Tipi:</label>
+                        <input type="text" class="form-control" id="bodyType" formControlName="BodyStyle"  placeholder="Araç Tipi Giriniz" name="bodyType">
+                    </div>
+                    <div class="mb-1">
+                        <label for="minDriverAge" class="form-label">Minimum Sürücü Yaşı:</label>
+                        <input type="number" class="form-control" id="minDriverAge" formControlName="MinDriverAge"  placeholder="Araç Tipi Giriniz" name="minDriverAge">
+                    </div>
+                    <div class="mb-1">
+                        <label for="minDrivingLicence" class="form-label">Minimum Ehliyet Süresi:</label>
+                        <input type="number" class="form-control" id="minDrivingLicence"  formControlName="MinDrivingLicence"  placeholder="Minimum Ehliyet Süresini Giriniz" name="minDrivingLicence">
+                    </div>
+                    <div class="mb-1">
+                        <label for="carModel" class="form-label">Model:</label>
+                        <input type="text" class="form-control" id="carModel" formControlName="CarModel"  placeholder="Model Bilgisi Giriniz" name="carModel">
+                    </div>
+                    <div class="mb-1">
+                        <label for="carRate" class="form-label">Puan:</label>
+                        <input type="number" class="form-control" id="carRate" formControlName="CarRate"  placeholder="Puan Bilgisi Giriniz" name="carRate">
+                    </div>
+        
+        
                 </div>
-                        
-                <button class="btn btn-success mt-5 " [disabled]="myForm.invalid" type="submit">Fotoğrafı Yükle</button>
-            </form>
-           </div>
-        <div class="col-6">
-            <div class="container text-center">
-                <i class="alert alert-danger">Fotoğraf Yüklemeden Önde Mutlaka Okuyun!</i>
-                
-                <ul class=" fs-6 fw-light list mt-4 list-group">
-                    <li class="list-group-item">Araç fotoğraflar 16:9 formatta olmalıdır.</li>
-                    <li class="list-group-item">En düşük çözünürlük 1920*1080 Pixel olmalıdır!</li>
-                    <li class="list-group-item">Arka planı çok renkli ve renk kontrastı aşırı yüksek fotoğraflar kullanılmamalıdır.</li>
-
-                    <li class="list-group-item">Bir aracın en fazla 5 fotoğrafı olabilir bu yüzden araç listesinde gözükmeyen araçlar için fotoğraf güncellemesi yapılacaksa 
-                        sistem yöneticinize başvurunuz!
-                    </li>
-
-
-                </ul>
             </div>
-
-        </div>
+            <div class="row mt-3 fs-5 fw-light">
+                <div class="col-3">
+                    <div class="mb-1">
+                        <label for="airConditioning" class="form-label">Klima:</label>
+                        &nbsp;<input type="checkbox"  formControlName="AirConditioning" id="airConditioning" placeholder="Klima" name="airConditioning">
+                      </div>
+                     
+                </div>
+                <div class="col-3">
+                 
+                      <div class="mb-1">
+                        <label for="navigation" class="form-label">Navigasyon:</label>
+                        &nbsp;<input type="checkbox"  id="navigation"  formControlName="Navigation" placeholder="Klima" name="navigation">
+                      </div>
+                </div>
+                <div class="col-6 text-end mt-5">
+                    <button type="submit" class="btn btn-danger btn-lg mx-4">Temizle</button>
+                    <button type="submit" class="btn btn-success btn-lg">Onayla</button>
+                </div>
+            </div>
+        
+           
+            
+          </form></div>
+        <div class="col-3 border border-secondary "><div class="container mt-5">
+            <h1 class="fs-1 fw-light text-center mb-5"> Araç Fotoğrafı Yükle</h1>
+        
+            <div class="row">
+                <div class="col-12">  
+                    <form [formGroup]="myForm" (ngSubmit)="submit()">
+            
+                        <div class="form-group">
+                            <!-- <label for="name">Name</label>
+                            <input 
+                                formControlName="name"
+                                id="name" 
+                                type="text" 
+                                class="form-control">
+                            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+                                <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+                            </div> -->
+                            <!-- carID -->
+                            <label for="CarID" >Araç Seçimi Yapınız!</label> 
+                            <!-- <input 
+                                formControlName="CarID"
+                                id="CarID" 
+                                type="text" 
+                                class="form-control"> -->
+                                 <!-- carID -->
+                                 <select class="form-select btn btn-success"  id="CarID"   formControlName="CarID"> 
+                                
+                                    <option   value="{{car.carID}}"  *ngFor="let car of cars" selected>{{car.carModel}}</option>
+                                  </select>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="file">File</label>
+                            <input 
+                                formControlName="file"
+                                id="file" 
+                                type="file" 
+                                class="form-control"
+                                (change)="onFileChange($event)">
+                            <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['file'].errors && f['file'].errors['required']">Resim Dosyası Seçilmedi!</div>
+                            </div>
+                        </div>
+                                
+                        <button class="btn btn-success mt-5" [disabled]="myForm.invalid" type="submit">Fotoğrafı Yükle</button>
+                    </form>
+                   </div>
+               
+                    <div class="container text-center mt-5">
+                        
+                        <div class="alert alert-warning " role="alert">
+                            Fotoğraf Yüklemeden Önce<strong> Okuyun!</strong>
+                            <ul class=" fw-light list mt-4 list-group" style="font-size:small; text-align: left;">
+                                <li class="list-group-item">Araç fotoğraflar 16:9 formatta olmalıdır.</li>
+                                <li class="list-group-item">En düşük çözünürlük 1920*1080 Pixel olmalıdır!</li>
+                                <li class="list-group-item">Arka planı çok renkli ve renk kontrastı aşırı yüksek fotoğraflar kullanılmamalıdır.</li>
+            
+                                <li class="list-group-item">Bir aracın en fazla 5 fotoğrafı olabilir bu yüzden araç listesinde gözükmeyen araçlar için fotoğraf güncellemesi yapılacaksa 
+                                    sistem yöneticinize başvurunuz!
+                                </li>
+            
+            
+                            </ul>
+                          </div>
+                        
+                    </div>
+        
+        </div></div>
     </div>
+
+</div>
+
 
   
 

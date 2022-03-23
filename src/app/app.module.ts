@@ -27,6 +27,7 @@ import { PayComponent } from './components/pay/pay.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AddCarComponent } from './components/add-car/add-car.component';
+import { PayResultComponent } from './components/pay-result/pay-result.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AddCarComponent } from './components/add-car/add-car.component';
     MainComponent,
     PayComponent,
     AddCarComponent,
+    PayResultComponent,
     
   ],
   imports: [

@@ -11,23 +11,21 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root',
 })
 export class PayService {
+  activeRental: Rental={RentalID:0,CarID:0,BillingPrice:0,CustomerID:0,RentDate:new Date(Date.now()),ReturnDate:new Date(Date.now()),InsurancesID:0 }
   constructor(private httpClient: HttpClient) {}
   apiUrl: string = 'https://localhost:44391/api/Pays/pay';
   result: ResponseModel = { message: '', success: false };
-  rentalExample: Rental = {
-    RentalID: 0,
-    CarID: 0,
-    CustomerID: 0,
-    RentDate: new Date(Date.now()),
-    ReturnDate: new Date(Date.now()),
-    BillingPrice: 0,
-    InsurancesID: 0,
-  };
+
+  
+
 
   Pay(): Observable<ListResponseModel<Rental>> {
     return this.httpClient.post<ListResponseModel<Rental>>(
       this.apiUrl,
-      this.rentalExample
+      this.activeRental
     );
+    
   }
+  setActiveRental(rental:Rental)
+  {this.activeRental=rental}
 }

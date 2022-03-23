@@ -15,6 +15,8 @@ import {
 } from '@angular/animations';
 import { NgbCarouselConfig, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Insurance } from 'src/app/models/insurance';
+import { Rental } from 'src/app/models/rental';
+import { PayService } from 'src/app/services/pay.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -73,7 +75,8 @@ export class CardetailComponent implements OnInit {
     private carImageService: CarImageService,
     config: NgbCarouselConfig,
     configRate: NgbRatingConfig,
-    private insuranceService: InsuranceService
+    private insuranceService: InsuranceService,
+    private payService:PayService
   ) {
     // customize default values of carousels used by this component tree
     config.showNavigationArrows = true;
@@ -141,11 +144,23 @@ export class CardetailComponent implements OnInit {
       this.insurances = response.data;
     });
   }
-  setInsurancePrice(price: number) {
-    this.carService.setInsurancePrice(price);
+  setInsurancePrice(price: number,Id:number) {
+    this.carService.setInsurancePrice(price,Id);
   }
 
   setCurrentCarDailyPrice(price: number) {
     this.currentCarDailyPrice = price;
+  }
+
+  setRental()
+  {
+    let rental:Rental={RentalID:0,CarID:this.car.carID,CustomerID:0,BillingPrice:this.totalPrice*1.18,InsurancesID:this.carService.insuranceId,
+      RentDate:this.carService.rentDate,ReturnDate:this.carService.returnDate
+    }
+    
+    this.payService.setActiveRental(rental);
+    
+
+
   }
 }

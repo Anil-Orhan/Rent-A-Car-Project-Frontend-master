@@ -12,7 +12,10 @@ import { SingleEntityResponseModel } from '../models/SingleEntityResponseModel';
 export class CarService {
   apiUrl = 'https://localhost:44391/api/';
   rentDays = 0;
+  rentDate=new Date();
+  returnDate=new Date();
   insurancePrice = 0;
+  insuranceId = 0;
   filterText = '';
 
   constructor(private httpClient: HttpClient) {}
@@ -45,15 +48,25 @@ export class CarService {
     let newPath = this.apiUrl + 'cars/getbyid?id=' + carID;
     return this.httpClient.get<SingleEntityResponseModel<Car>>(newPath);
   }
-  setRentDays(dayCount: number) {
+  setRentDays(dayCount: number,rentDate:Date,returnDate:Date) {
     this.rentDays = dayCount;
+    this.rentDate=rentDate;
+    this.returnDate=returnDate;
   }
-  setInsurancePrice(price: number) {
+  setInsurancePrice(price: number,id:number) {
     console.log('ÖNCE' + this.insurancePrice);
     this.insurancePrice = price;
+    this.insuranceId=id;
     console.log('SONRA' + this.insurancePrice);
   }
   getRentDays() {
     return this.rentDays;
   }
+
+  
+    AddCar(Car:Car):Observable<ListResponseModel<Car>> {
+      let newPath = this.apiUrl + 'cars/add';
+      return this.httpClient.post<ListResponseModel<Car>>(newPath,Car);
+    }
+  
 }
