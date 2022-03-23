@@ -1,0 +1,70 @@
+<ngb-carousel *ngIf="images" class="min-vw-100 ">
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper  ">
+            <img [src]="images[0]" class="min-vw-100" style="height:30rem;  filter:brightness(0.5);"
+                alt="Random first slide">
+        </div>
+        <div class="carousel-caption  position-absolute top-10 start-25 translate-middle-x p-3 mb-5"
+            style="margin-left:5rem">
+            <p class=" fw-bolder m-5 " style="font-size:60px; font-family:Arial, Helvetica, sans-serif">Hoşgeldiniz</p>
+            <p class="fs-3 fw-lighter m-5">En uygun fiyatlarla,<br> en kaliteli araçlar burada!
+            </p>
+            <a class="btn btn-light btn-lg " style="padding: 0.5rem 5rem 0.5rem 5rem; " href="car">Araçlara
+                Git</a>
+        </div>
+    </ng-template>
+
+</ngb-carousel>
+
+
+
+
+
+
+<!-- Four columns: 25% width-->
+<div class="container">
+    <div class="row ">
+
+        <span class="col-4">
+            <div class="card bg-success shadow-lg">
+                <i class="fa-solid fa-basket-shopping fs-3 fw-bold text-center p-2 text-light "></i>
+                <div class="card-body  ">
+                    <h4 class="card-title text-light">Güvenli Alışveriş</h4>
+                    <p class="card-text text-light fs-6 fw-light">Online ödemelerde 256bit uçtan uca kriptolama
+                        ile
+                        kart
+                        bilgileriniz güvence altında. </p>
+                    <a href="#" class="btn btn-light  ">Hemen Kirala</a>
+                </div>
+            </div>
+        </span>
+        <span class="col-4">
+            <div class="card bg-success  shadow-lg">
+
+                <i class="fa-solid fa-phone-flip fs-3 fw-bold text-center p-2 text-light "></i>
+                <div class="card-body  ">
+                    <h4 class="card-title text-light">Sürekli İletişim</h4>
+                    <p class="card-text text-light fs-6 fw-light">7/24 Çalışan çağrı merkezimiz ile her türlü sorun ve
+                        sorunuz için beklemekteyiz.</p>
+                    <a href="#" class="btn btn-light  ">Bize Ulaşın</a>
+                </div>
+            </div>
+        </span>
+        <span class="col-4">
+            <div class="card bg-success shadow-lg ">
+
+                <i class="fa-solid fa-truck-pickup fs-3 fw-bold text-center p-2 text-light "></i>
+                <div class="card-body  ">
+                    <h4 class="card-title text-light">Yol Yardımı</h4>
+                    <p class="card-text text-light fs-6 fw-light">Kaza ve arıza anında ücretsiz yol yardımı hizmetinden
+                        faydalanabilirsiniz.</p>
+                    <a href="#" class="btn btn-light  ">Daha Fazla Bilgi</a>
+                </div>
+            </div>
+        </span>
+
+
+
+
+    </div>
+</div>

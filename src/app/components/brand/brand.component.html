@@ -1,0 +1,41 @@
+<!-- Markaya Göre Filtreleme Alanı -->
+<!-- <div>
+  <div class="text-center">
+    <h5 class="fs-6 font-monospace">Markaya Göre</h5>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let brand of brands" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{ brand.brandID }}"
+      [class]="getCurrentBrandClass(brand)" class="btn btn-success m-1 rounded-pill border-0 p-1" aria-current="true">
+      {{ brand.brandName }}
+    </li>
+  </ul>
+</div> -->
+<!-- Markaya Göre Filtreleme Alanı Bitiş -->
+
+
+<div class=" text-center">
+  <div ngbDropdown placement="bottom-end" class="d-inline-block">
+    <button class="btn btn-success  flex-fill fs-6 fw-light " style="padding: 0.25em  6rem 0.25em 6rem;"
+      id="dropdownBasic2" ngbDropdownToggle>Marka</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+      <button *ngFor="let brand of brands" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{ brand.brandID }}"
+        [class]="getCurrentBrandClass(brand)" class=" rounded-2 border-0 p-1 fs-6 fw-light" aria-current="true"
+        ngbDropdownItem> {{
+        brand.brandName }}</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  button:active {
+    background: #198754;
+  }
+
+
+
+  .active {
+    background-color: #198754;
+    border-color: #0d643c;
+  }
+</style>

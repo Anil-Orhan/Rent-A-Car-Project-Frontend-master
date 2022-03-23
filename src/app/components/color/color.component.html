@@ -1,0 +1,50 @@
+<!-- Renge Göre Filtreleme Alanı -->
+<!-- <div>
+  <div class="text-center">
+    <h5 class="fs-7 font-monospace">Renk Tercihine Göre</h5>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let color of colors" (click)="setCurrentColor(color)" routerLink="/cars/color/{{ color.colorID }}"
+      [class]="getCurrentColorClass(color)" class="btn btn-success m-1 rounded-pill border-1 p-1" aria-current="true">
+      {{ color.colorName }}
+    </li>
+  </ul>
+</div> -->
+<!-- Renge Göre Filtreleme Alanı Bitiş -->
+
+<style>
+  .active {
+    background-color: #198754;
+    border-color: #0d643c;
+  }
+</style>
+
+
+
+<div class=" text-center">
+  <div ngbDropdown placement="bottom-end  d-grid gap-2" class="">
+    <button class="btn btn-success mb-3 flex-fill fs-6 fw-light " id="dropdownBasic2"
+      style="padding: 0.25em  6rem 0.25em 6rem;" ngbDropdownToggle>Renk</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="fs-6 fw-light">
+      <button *ngFor="let color of colors" (click)="setCurrentColor(color)" routerLink="/cars/color/{{ color.colorID }}"
+        [class]="getCurrentColorClass(color)" class=" rounded-2 border-0 p-1 fs-6 fw-light" aria-current="true"
+        ngbDropdownItem>
+        {{
+        color.colorName }}</button>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  button:active {
+    background: #198754;
+  }
+
+
+
+  .active {
+    background-color: #198754;
+    border-color: #0d643c;
+  }
+</style>

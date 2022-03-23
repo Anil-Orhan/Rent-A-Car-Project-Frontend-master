@@ -1,0 +1,17 @@
+.col-4 {
+  text-align: center;
+
+  position: relative;
+
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.col-4 div {
+  position: relative;
+  margin: auto;
+}
+.card-body {
+  height: 12rem;
+}

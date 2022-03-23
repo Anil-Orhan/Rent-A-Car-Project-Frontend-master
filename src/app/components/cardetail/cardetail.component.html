@@ -1,0 +1,196 @@
+<div class="container">
+  <div class="mx-5 mb-5 pb-5">
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <!-- ARAÇ RESMİ -->
+          <div class="col-12" style="margin-top: 2em">
+            <!-- <img class="rounded img-fluid img-thumbnail" [src]="[getImageSource(carImage)]" /> -->
+            <ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows"
+              [showNavigationIndicators]="showNavigationIndicators">
+              <ng-template ngbSlide *ngFor="let image of carImages">
+                <div class="picsum-img-wrapper">
+                  <img class="rounded img-fluid img-thumbnail  " [src]="[getImageSource(image)]">
+                </div>
+                <div class="carousel-caption">
+
+                </div>
+              </ng-template>
+            </ngb-carousel>
+
+            <hr>
+
+
+
+          </div>
+          <!-- ARAÇ RESMİ BİTİŞ-->
+
+          <!-- KASKO VE GÜN SEÇİMİ -->
+          <div class="row mt-3">
+            <div class="col-8">
+              <div *ngFor="let inc of insurances" class="form-check text-dark">
+                <input type="radio" class="form-check-input bg-success" id="radio1" name="optradio"
+                  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice)">
+                <label class="form-check-label fs-6 fw-lighter" for="radio1">{{inc.insuranceName}} (Günlük +
+                  <i class="text-success fw-bold"> {{inc.insuranceDailyPrice}}₺</i>)</label>
+
+
+              </div>
+            </div>
+            <div class="col-4">
+              <app-datepicker></app-datepicker>
+            </div>
+          </div>
+          <!-- KASKO VE GÜN SEÇİMİ  BİTİŞ-->
+        </div>
+        <div class="row"></div>
+      </div>
+      <!-- SAĞ PANEL -->
+      <div class="col-6">
+
+        <div class="row mt-4">
+          <div class="col-6 text-lg-start mr-5">
+            <i class="fs-2">{{ carDetail.brandName }}</i><br />
+            <i class="fs-4">{{ car.carModel }}</i>
+            <p class="fs-5">{{ car.modelYear }}</p>
+            <i class="fs-4 text-success fw-bold">{{ car.dailyPrice }} ₺</i>
+            <i class="text-muted fs-5"> / 1 Gün İçin</i>
+          </div>
+          <div class="col-6 text-end">
+            <div>
+              <ngb-rating [rate]="car.carRate" class="fs-3" style=" color:	hsl(43, 77%, 51%);padding:3px">
+              </ngb-rating>
+            </div>
+
+            <i *ngIf="rentDay!=0" class="fs-5 text-success ">{{ (car.dailyPrice+insurancePrice)*rentDay}} ₺<i
+                class="text-muted fs-4 fw-light"> / {{rentDay}} Gün İçin</i>
+              <div class="alert alert-warning fs-6 fw-light" @fade role="alert">
+                Fiyatlar Aynı Gün İçin Geçerlidir!
+              </div>
+            </i>
+
+            <i class="fs-4 text-warning fw-bold"></i>
+
+          </div>
+        </div>
+        <!-- ARAÇ ÖZELLİKLERİ -->
+        <div class="row mt-4 text-left">
+          <hr />
+
+          <ul class="list-group fs-6">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Kilometre :</i></div>
+                <div class="col-6">{{ car.kilometer }}</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Yakıt Türü :</i></div>
+                <div class="col-6">{{ car.fuelType }}</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Vites :</i></div>
+                <div class="col-6">{{ car.transmission }}</div>
+              </div>
+            </li>
+            <li *ngIf="car.airConditioning" class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Klima :</i></div>
+                <div class="col-6">Var</div>
+              </div>
+            </li>
+            <li *ngIf="!car.airConditioning" class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Klima :</i></div>
+                <div class="col-6">Yok</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Motor Hacmi :</i></div>
+                <div class="col-6">{{ car.engineCapacity }}</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Kasa Tipi :</i></div>
+                <div class="col-6">{{ car.bodyStyles }}</div>
+              </div>
+            </li>
+
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Renk :</i></div>
+                <div class="col-6">{{ carDetail.colorName }}</div>
+              </div>
+            </li>
+
+            <li *ngIf="car.navigation" class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Navigasyon :</i></div>
+                <div class="col-6">Var</div>
+              </div>
+            </li>
+            <li *ngIf="!car.navigation" class="list-group-item">
+              <div class="row">
+                <div class="col-6"><i class="text-muted">Navigasyon :</i></div>
+                <div class="col-6">Yok</div>
+              </div>
+            </li>
+
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6">
+                  <i class="text-muted">Min. Sürücü Yaşı :</i>
+                </div>
+                <div class="col-6">{{ car.minDriverAge }}</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6">
+                  <i class="text-muted">Min. Ehliyet Süresi :</i>
+                </div>
+                <div class="col-6">{{ car.minDrivingLicence }} Yıl</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- ARAÇ ÖZELLİKLERİ BİTİŞ -->
+      </div>
+
+
+      <!-- SAĞ PANEL  BİTİŞ-->
+    </div>
+
+    <!-- KİRALA BUTONU -->
+    <div class="row">
+
+      <div class="col-6"></div>
+      <div class="col-6" style="text-align: right">
+        <button type="button" (click)="setCurrentCarDailyPrice(car.dailyPrice)" (click)="getRentDay()"
+          class="btn btn-dark btn-lg mt-3" style="
+      margin-right: 3em;
+      padding: 10px;
+      padding-right: 30px;
+      padding-left: 30px;
+    ">
+          Hesapla
+        </button>
+        <button routerLink="/pay" type="button" class="btn btn-success btn-lg mt-3" style="
+          margin-right: 3em;
+          padding: 10px;
+          padding-right: 30px;
+          padding-left: 30px;
+        ">
+          Hemen Kirala
+        </button>
+      </div>
+    </div>
+    <!-- KİRALA BUTONU BİTİŞ -->
+  </div>
+  <hr />
+</div>
