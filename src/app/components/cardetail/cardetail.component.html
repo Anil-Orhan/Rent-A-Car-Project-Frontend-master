@@ -10,7 +10,7 @@
               [showNavigationIndicators]="showNavigationIndicators">
               <ng-template ngbSlide *ngFor="let image of carImages">
                 <div class="picsum-img-wrapper">
-                  <img class="rounded img-fluid img-thumbnail  " [src]="[getImageSource(image)]">
+                  <img class="rounded img-fluid img-thumbnail" [src]="[getImageSource(image)]">
                 </div>
                 <div class="carousel-caption">
 
@@ -28,10 +28,12 @@
           <!-- KASKO VE GÜN SEÇİMİ -->
           <div class="row mt-3">
             <div class="col-8">
-              <div *ngFor="let inc of insurances" class="form-check text-dark">
-                <input type="radio" class="form-check-input bg-success" id="radio1" name="optradio"
+          
+              <div  *ngFor="let inc of insurances"  class="form-check text-dark">
+                
+                <input *ngIf="inc.insuranceId!=1003" type="radio" class="form-check-input bg-success" id="radio1" name="optradio"
                   value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice,inc.insuranceId)">
-                <label class="form-check-label fs-6 fw-lighter" for="radio1">{{inc.insuranceName}} (Günlük +
+                <label *ngIf="inc.insuranceId!=1003" class="form-check-label fs-6 fw-lighter" for="radio1">{{inc.insuranceName}} (Günlük +
                   <i class="text-success fw-bold"> {{inc.insuranceDailyPrice}}₺</i>)</label>
 
 
@@ -43,7 +45,11 @@
           </div>
           <!-- KASKO VE GÜN SEÇİMİ  BİTİŞ-->
         </div>
-        <div class="row"></div>
+        <div class="row m-1  fs-6 fw-light ">
+            <i   *ngIf="CarOK===true"      class="text-danger"> <i class="fa-solid fa-circle-xmark"></i> {{message}} </i>
+            <i  *ngIf="CarOK===false" class="text-success"><i class="fa-solid fa-circle-check"></i> Araç Belirtilen Tarih Aralığında Müsait </i></div>
+         
+       
       </div>
       <!-- SAĞ PANEL -->
       <div class="col-6">
@@ -171,7 +177,7 @@
 
       <div class="col-6"></div>
       <div class="col-6" style="text-align: right">
-        <button type="button" (click)="setCurrentCarDailyPrice(car.dailyPrice)" (click)="getRentDay()"
+        <button type="button" [style]="" (click)="setCurrentCarDailyPrice(car.dailyPrice)" (click)="getRentDay()"
           class="btn btn-dark btn-lg mt-3" style="
       margin-right: 3em;
       padding: 10px;
@@ -180,7 +186,15 @@
     ">
           Hesapla
         </button>
-        <button routerLink="/pay" (click)="setRental()" type="button" class="btn btn-success btn-lg mt-3" style="
+        <button routerLink="/pay" *ngIf="payOK===true" (click)="setRental()" type="button" class="btn btn-success btn-lg mt-3" style="
+          margin-right: 3em;
+          padding: 10px;
+          padding-right: 30px;
+          padding-left: 30px;
+        ">
+          Hemen Kirala
+        </button>
+        <button routerLink="/pay"  disabled *ngIf="payOK===false" (click)="setRental()" type="button" class="btn btn-success btn-lg mt-3" style="
           margin-right: 3em;
           padding: 10px;
           padding-right: 30px;

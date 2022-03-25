@@ -17,6 +17,7 @@ import { NgbCarouselConfig, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Insurance } from 'src/app/models/insurance';
 import { Rental } from 'src/app/models/rental';
 import { PayService } from 'src/app/services/pay.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -27,6 +28,12 @@ import { PayService } from 'src/app/services/pay.service';
       transition('void=>*', [
         style({ width: '80%' }),
         animate(500, style({ width: '100%' })),
+      ]),
+    ]),
+    trigger('fadeLeft', [
+      transition('void=>*', [
+        style({ width: '20%' }),
+        animate(100, style({ width: '100%' })),
       ]),
     ]),
   ],
@@ -63,6 +70,10 @@ export class CardetailComponent implements OnInit {
   carImages: CarImage[] = [];
   insurances: Insurance[] = [];
   rentDay: number = 0;
+  rental!: Rental;
+
+  CarOK!: Boolean;
+
   insurancePrice: number = 0;
   currentCarDailyPrice: number = 0;
   totalPrice: number = 0;
@@ -76,7 +87,8 @@ export class CardetailComponent implements OnInit {
     config: NgbCarouselConfig,
     configRate: NgbRatingConfig,
     private insuranceService: InsuranceService,
-    private payService:PayService
+    private payService: PayService,
+    private rentalService: RentalService
   ) {
     // customize default values of carousels used by this component tree
     config.showNavigationArrows = true;
@@ -96,7 +108,17 @@ export class CardetailComponent implements OnInit {
         this.getCarImageByCarId(params['carID']);
       });
     });
-    this.getInsurance();
+    this.getInsurance(); //Sigortaları Getir
+    this.setInsurancePrice(0, 1003); //Default Sigorta Bilgileri
+    this.rental = {
+      RentalID: 0,
+      CarID: this.car.carID,
+      CustomerID: 0,
+      BillingPrice: this.totalPrice * 1.18,
+      InsurancesID: this.carService.insuranceId,
+      RentDate: this.carService.rentDate,
+      ReturnDate: this.carService.returnDate,
+    };
   }
 
   getCarByID(carID: number) {
@@ -110,14 +132,13 @@ export class CardetailComponent implements OnInit {
     });
   }
   getRentDay() {
+    this.setRental();
     this.rentDay = this.carService.getRentDays();
     this.insurancePrice = this.carService.insurancePrice;
     this.totalPrice =
       (this.currentCarDailyPrice + this.insurancePrice) * this.rentDay;
-    console.log('currentCarDailyPrice:' + this.currentCarDailyPrice);
-    console.log('rentDay' + this.rentDay);
-    console.log('insurancePrice' + this.insurancePrice);
-    console.log('total:' + this.totalPrice);
+
+    this.checkRental();
   }
   getCarById(carId: number) {
     this.carImageService.getCarImageByCarId(carId).subscribe((response) => {
@@ -144,23 +165,41 @@ export class CardetailComponent implements OnInit {
       this.insurances = response.data;
     });
   }
-  setInsurancePrice(price: number,Id:number) {
-    this.carService.setInsurancePrice(price,Id);
+  setInsurancePrice(price: number, Id: number) {
+    this.carService.setInsurancePrice(price, Id);
   }
 
   setCurrentCarDailyPrice(price: number) {
     this.currentCarDailyPrice = price;
   }
 
-  setRental()
-  {
-    let rental:Rental={RentalID:0,CarID:this.car.carID,CustomerID:0,BillingPrice:this.totalPrice*1.18,InsurancesID:this.carService.insuranceId,
-      RentDate:this.carService.rentDate,ReturnDate:this.carService.returnDate
-    }
-    
-    this.payService.setActiveRental(rental);
-    
-
-
+  setRental() {
+    this.payService.setActiveRental(this.rental);
   }
+
+  message: string = '';
+  returnDate: string = '';
+  payOK:boolean=false;
+
+  checkRental() {
+    let rental1 = this.rental;
+    rental1.CarID = this.car.carID;
+
+    rental1.RentDate = this.carService.rentDate;
+
+    this.rentalService.checkRentalDate(rental1).subscribe((response) => {
+      this.message = response.message;
+
+      if (response.success) {
+        this.CarOK = true;
+        this.payOK=false
+
+      } else {
+        this.CarOK = false;
+        this.payOK=true;
+      }
+    });
+  }
+
+ 
 }

@@ -54,16 +54,18 @@ export class CarService {
     this.returnDate=returnDate;
   }
   setInsurancePrice(price: number,id:number) {
-    console.log('ÖNCE' + this.insurancePrice);
+
+    
+    if(id===null|| id===undefined || id===0){id=1003;}
+    
     this.insurancePrice = price;
     this.insuranceId=id;
-    console.log('SONRA' + this.insurancePrice);
+
   }
   getRentDays() {
     return this.rentDays;
   }
 
-  
     AddCar(Car:Car):Observable<ListResponseModel<Car>> {
       let newPath = this.apiUrl + 'cars/add';
       return this.httpClient.post<ListResponseModel<Car>>(newPath,Car);

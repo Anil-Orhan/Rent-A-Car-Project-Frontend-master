@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router, RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { delay } from 'rxjs';
 import { NgbNavLink } from '@ng-bootstrap/ng-bootstrap';
+import { RentalService } from 'src/app/services/rental.service';
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -19,28 +20,40 @@ export class PayComponent implements OnInit {
   constructor(
     private payService: PayService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private rentalService: RentalService
   ) {}
 
-  ngOnInit(): void {this.rental=this.payService.activeRental}
+  ngOnInit(): void
+   {this.rental=this.payService.activeRental
+    console.log("Pay Component ngOnInıt:  rental -->"+ this.rental.RentDate)
+  
+    console.log(this.rental)
+  }
 
    Pay() {
      try {
        let result =  this.payService.Pay().subscribe((response) => {
       this.currentRent = response.data;
+       if(response.success){
        
-       console.log("if çalıştı PAY")
         this.dataLoad=true;
         setTimeout(()=>
         {
         this.toastrService.success(response.message); 
+         this.rentalService.addRental(this.rental).subscribe((responseRental)=>{
+
+            alert("Rental Eklendi")
+
+         });
+         
             this.router.navigate(['/pay-result']);
-            console.log("if çalıştı set time out")
+          
          
           
         
         },2000)
-         
+      }
         
 
     });
@@ -54,7 +67,7 @@ export class PayComponent implements OnInit {
     
     
   }
-  
+ 
   
   
 
