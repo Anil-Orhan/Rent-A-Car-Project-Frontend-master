@@ -1,12 +1,12 @@
-<form class="row">
-  <div class="row mt-2">
+<form class="row" >
+  <div class="row mt-1">
     <i class="p-0 m-0">
       <i class="fs-6 text-center text-dark">Alış Tarihi:</i>
     </i>
 
     <span class="p-0 m-0">
-      <div class="input-group">
-        <input (dateSelect)="DateBetween()" class="form-control" placeholder="YYYY-AA-GG" name="dp1" [(ngModel)]="model"
+      <div class="input-group " >
+        <input (dateSelect)="DateBetween()" class="form-control" placeholder="YYYY-AA-GG" style="font-size: 12px;" name="dp1" [(ngModel)]="model"
           ngbDatepicker #d1="ngbDatepicker" />
         <button class="btn btn-outline-dark fa-solid active fa-calendar-days calendar" (click)="d1.toggle()"
           type="button"></button>
@@ -25,8 +25,8 @@
 
     <span class="p-0 m-0">
       <div class="input-group">
-        <input (dateSelect)="DateBetween()" class="form-control" placeholder="YYYY-AA-GG" name="dp2"
-          [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" />
+        <input (dateSelect)="DateBetween()" class="form-control " placeholder="YYYY-AA-GG" style="font-size: 12px;" name="dp2"
+          [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker"  />
         <button class="btn btn-outline-dark  fa-solid active fa-calendar-days calendar" (click)="d2.toggle()"
           type="button"></button>
       </div>

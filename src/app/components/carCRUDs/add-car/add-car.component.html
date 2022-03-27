@@ -5,16 +5,16 @@
     <div class="col-9"></div>
     <div class="col-3"></div>
 </div>
-<div class="container mt-5 fs-6 fw-light">
+<div class="container mt-5 mb-5 fs-6 fw-light">
     <div class="row">
-        <div class="col-9"><form [formGroup]="carForm" (ngSubmit)="submitCar()">
+        <div class="col-6  "><form [formGroup]="carForm" (ngSubmit)="submitCar()">
             <h1 class="fs-1 fw-light text-center mb-5"> Yeni Araç Ekle</h1>
     
             <div class="row ">
                 <div class="col-6"> 
                     <div class="mb-1">
                         <label for="id" class="form-label">Araba ID:</label>
-                        <input type="number" class="form-control" id="id" placeholder='ID Otomatik Belirlenir ' disabled name="id">
+                        <input type="number" style="background-color:rgb(204, 203, 203);" class="form-control text-lighter fs-6" id="id" placeholder='ID Otomatik Belirlenir ' disabled name="id">
                       </div>
                     <div class="mb-1">
                     <label for="brand" class="form-label">Marka ID:</label>
@@ -99,7 +99,7 @@
                       </div>
                 </div>
                 <div class="col-6 text-end mt-5">
-                    <button type="submit" class="btn btn-danger btn-lg mx-4">Temizle</button>
+                    <button type="button" class="btn btn-danger btn-lg mx-4">Temizle</button>
                     <button type="submit" class="btn btn-success btn-lg">Onayla</button>
                 </div>
             </div>
@@ -107,7 +107,7 @@
            
             
           </form></div>
-        <div class="col-3 border border-secondary "><div class="container mt-5">
+        <div class="col-5 border border-dark "><div class="container mt-5">
             <h1 class="fs-1 fw-light text-center mb-5"> Araç Fotoğrafı Yükle</h1>
         
             <div class="row">
@@ -115,27 +115,13 @@
                     <form [formGroup]="myForm" (ngSubmit)="submit()">
             
                         <div class="form-group">
-                            <!-- <label for="name">Name</label>
-                            <input 
-                                formControlName="name"
-                                id="name" 
-                                type="text" 
-                                class="form-control">
-                            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-                                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-                                <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
-                            </div> -->
-                            <!-- carID -->
+                      
                             <label for="CarID" >Araç Seçimi Yapınız!</label> 
-                            <!-- <input 
-                                formControlName="CarID"
-                                id="CarID" 
-                                type="text" 
-                                class="form-control"> -->
-                                 <!-- carID -->
-                                 <select class="form-select btn btn-success"  id="CarID"   formControlName="CarID"> 
-                                
+                          
+                                 <select class="form-select btn btn-dark fw-light"  id="CarID"   formControlName="CarID"> 
+                                    <option   [ngValue]="null" selected disabled>Araç Seçimi Yapınız!</option>
                                     <option   value="{{car.carID}}"  *ngFor="let car of cars" selected>{{car.carModel}}</option>
+                                    
                                   </select>
                         </div>
                             

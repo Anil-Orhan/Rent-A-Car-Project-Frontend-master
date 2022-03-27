@@ -26,7 +26,8 @@ export class PayComponent implements OnInit {
 
   ngOnInit(): void
    {this.rental=this.payService.activeRental
-    console.log("Pay Component ngOnInıt:  rental -->"+ this.rental.RentDate)
+
+    console.log("Pay Component ngOnInıt:  rental Billings -->"+ this.payService.activeRental.BillingPrice)
   
     console.log(this.rental)
   }

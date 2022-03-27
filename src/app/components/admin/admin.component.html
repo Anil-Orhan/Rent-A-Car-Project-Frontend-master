@@ -1,0 +1,67 @@
+
+
+<div class="container">
+    <h1 class="fs-1 fw-light text-center m-5">Yönetici Paneli </h1>
+
+    <hr>
+    <ul ngbNav #nav="ngbNav"  class="nav-tabs justify-content-center">
+        
+        <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
+         
+          <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>Arabalar</i>
+        
+          <div ngbDropdownMenu class="">
+            <button ngbNavLink  ngbDropdownItem (click)="panelControlAddCar()">Araba Ekle</button>
+            <button ngbNavLink ngbDropdownItem (click)="panelControlUpdateCar()">Araba Güncelle</button>
+           
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem>Araç Listesi</button>
+          </div>
+       
+        </li>
+
+        <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
+            <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>Markalar</i>
+
+            <div ngbDropdownMenu class="">
+                <button ngbNavLink  ngbDropdownItem (click)="panelControlAddCar()">Marka Ekle</button>
+                <button ngbNavLink ngbDropdownItem (click)="panelControlUpdateCar()">Marka Güncelle</button>
+               
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>Marka Listesi</button>
+              </div>
+        
+        
+        </li>
+        
+      </ul>
+      
+     
+   
+      
+   
+    <div class=" text-center">
+
+        
+
+    <div  *ngIf="addCar" class="col-md-12"> 
+       
+
+         <app-add-car></app-add-car>
+        
+    
+
+    </div>
+    
+   
+   <div  *ngIf="updateCar" class="col-md-12"> 
+   
+        <app-update-car></app-update-car>
+  
+
+
+   </div>
+
+  
+</div>
+

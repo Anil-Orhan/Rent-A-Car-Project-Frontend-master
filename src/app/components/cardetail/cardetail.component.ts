@@ -110,15 +110,8 @@ export class CardetailComponent implements OnInit {
     });
     this.getInsurance(); //Sigortaları Getir
     this.setInsurancePrice(0, 1003); //Default Sigorta Bilgileri
-    this.rental = {
-      RentalID: 0,
-      CarID: this.car.carID,
-      CustomerID: 0,
-      BillingPrice: this.totalPrice * 1.18,
-      InsurancesID: this.carService.insuranceId,
-      RentDate: this.carService.rentDate,
-      ReturnDate: this.carService.returnDate,
-    };
+   
+  
   }
 
   getCarByID(carID: number) {
@@ -135,8 +128,9 @@ export class CardetailComponent implements OnInit {
     this.setRental();
     this.rentDay = this.carService.getRentDays();
     this.insurancePrice = this.carService.insurancePrice;
-    this.totalPrice =
-      (this.currentCarDailyPrice + this.insurancePrice) * this.rentDay;
+    
+    this.totalPrice =(this.currentCarDailyPrice + this.insurancePrice) * this.rentDay;
+  
 
     this.checkRental();
   }
@@ -174,7 +168,20 @@ export class CardetailComponent implements OnInit {
   }
 
   setRental() {
+    this.rental = {
+      RentalID: 0,
+      CarID: this.car.carID,
+      CustomerID: 0,
+      BillingPrice: this.totalPrice * 1.18,
+      InsurancesID: this.carService.insuranceId,
+      RentDate: this.carService.rentDate,
+      ReturnDate: this.carService.returnDate,
+    };
     this.payService.setActiveRental(this.rental);
+
+    console.log("this.rental:"+this.rental.BillingPrice)
+    console.log("this.currentCarDailyPrice:"+this.currentCarDailyPrice)
+   
   }
 
   message: string = '';
@@ -198,7 +205,9 @@ export class CardetailComponent implements OnInit {
         this.CarOK = false;
         this.payOK=true;
       }
+
     });
+    
   }
 
  

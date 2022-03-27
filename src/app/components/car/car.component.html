@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-2 flex-column pt-5 text-dark " style="background-color: rgb(223, 222, 222)">
+  <div class="col-2 flex-column pt-5 text-dark min-vh-100" style="background-color: rgb(223, 222, 222)">
     <h4 class="page-header text-center">Filtreler</h4>
     <hr class="solid" />
 
@@ -19,12 +19,12 @@
 
 
 
-        <div class="row row-cols-auto m-4 mt-3 ">
-          <div class="col m-4 mt-3  " *ngFor="let cars of carDetails">
+        <div class="row row-cols-auto m-2 mt-1 ">
+          <div class="col m-2 mt-2  " *ngFor="let cars of carDetails">
             <div class="card shadow-lg bg-body rounded" style="width: 18rem; height:25rem; ">
 
               <img class="card-img-top " style="height:13.5em;" [src]="[getImageSource(cars.carID)]" />
-              <div class="card-body  " style="height:8rem;">
+              <div class="card-body  " style="height:12rem;">
                 <div class="row ">
                   <div class="col-lg-6"><i class="card-title fs-6">{{ cars.brandName }}</i></div>
                   <div class="col-lg-6"> <i class="fs-5 text-success fw-lighter">{{ cars.dailyPrice }} ₺
@@ -37,12 +37,20 @@
 
                 <h6 class="card-title fs-6 fw-lighter">{{ cars.modelYear }}</h6>
 
-                <div class="mt-5"><a  routerLink="" class="list-group-item"
-                    aria-current="true" class="btn btn-dark ">Detaylara Git</a>
-                  <a routerLink="/cars/detail/{{ cars.carID }}" class="btn btn-success m-lg-1 ">Hemen Kirala</a>
-                </div>
+                
 
               </div>
+              <div class="card-footer ">
+                <div class="text-end">
+                  
+               <i style="font-size: 10px;"  routerLink="/cars/detail/{{ cars.carID }}" class="btn btn-dark btn-rounded " data-mdb-ripple-color="dark">
+                
+                Hemen Kirala &nbsp;
+              
+                <i class="fa-solid fa-angles-right"></i></i>
+              
+            </div>
+          </div>
             </div>
           </div>
         </div>

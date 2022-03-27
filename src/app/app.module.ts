@@ -26,8 +26,11 @@ import { MainComponent } from './components/main/main.component';
 import { PayComponent } from './components/pay/pay.component';
 
 import { ToastrModule } from 'ngx-toastr';
-import { AddCarComponent } from './components/add-car/add-car.component';
+import { AddCarComponent } from './components/carCRUDs/add-car/add-car.component';
+
 import { PayResultComponent } from './components/pay-result/pay-result.component';
+
+
 
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -44,6 +47,10 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { AdminComponent } from './components/admin/admin.component';
+import { UpdateCarComponent } from './components/carCRUDs/update-car/update-car.component';
+import * as mdb from 'mdb-angular-ui-kit'; // lib
+
 
 
 @NgModule({
@@ -66,6 +73,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     PayComponent,
     AddCarComponent,
     PayResultComponent,
+    AdminComponent,
+    UpdateCarComponent,
     
   ],
   imports: [

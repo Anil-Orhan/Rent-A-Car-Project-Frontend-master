@@ -1,4 +1,4 @@
-<ngb-carousel *ngIf="images" class="min-vw-100 ">
+<ngb-carousel *ngIf="images" class="min-vw-100 m-0 p-0">
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper  ">
             <img [src]="images[0]" class="min-vw-100" style="height:30rem;  filter:brightness(0.5);"
@@ -22,49 +22,63 @@
 
 
 <!-- Four columns: 25% width-->
-<div class="container">
-    <div class="row ">
+<div class="container   text-center">
+    <div class="row row-cols-auto">
 
-        <span class="col-4">
+        <span class="col-4 ">
             <div class="card bg-success shadow-lg">
-                <i class="fa-solid fa-basket-shopping fs-3 fw-bold text-center p-2 text-light "></i>
+                <div class="card-header">
+                    <i class="fa-solid fa-basket-shopping fs-3 fw-bold text-center p-2 text-light "></i>
+                
+                    <h4 class="card-title text-light mt-1">Güvenli Alışveriş</h4>
+                </div>
+                
                 <div class="card-body  ">
-                    <h4 class="card-title text-light">Güvenli Alışveriş</h4>
+                    
                     <p class="card-text text-light fs-6 fw-light">Online ödemelerde 256bit uçtan uca kriptolama
                         ile
                         kart
                         bilgileriniz güvence altında. </p>
-                    <a href="#" class="btn btn-light  ">Hemen Kirala</a>
+                   
                 </div>
+                <div class="card-footer"> <i href="#" class="btn btn-light  ">Hemen Kirala</i></div>
             </div>
         </span>
-        <span class="col-4">
-            <div class="card bg-success  shadow-lg">
-
-                <i class="fa-solid fa-phone-flip fs-3 fw-bold text-center p-2 text-light "></i>
+        <span class="col-4 ">
+            <div class="card bg-success shadow-lg">
+                <div class="card-header">
+                    <i class="fa-solid fa-phone-flip fs-3 fw-bold text-center p-2 text-light "></i>
+                
+                    <h4 class="card-title text-light mt-1">Sürekli İletişim</h4>
+                </div>
+                
                 <div class="card-body  ">
-                    <h4 class="card-title text-light">Sürekli İletişim</h4>
+                    
                     <p class="card-text text-light fs-6 fw-light">7/24 Çalışan çağrı merkezimiz ile her türlü sorun ve
-                        sorunuz için beklemekteyiz.</p>
-                    <a href="#" class="btn btn-light  ">Bize Ulaşın</a>
+                        sorunuz için beklemekteyiz. </p>
+                   
                 </div>
+                <div class="card-footer"> <i href="#" class="btn btn-light  ">Bize Ulaşın</i></div>
             </div>
         </span>
-        <span class="col-4">
-            <div class="card bg-success shadow-lg ">
-
-                <i class="fa-solid fa-truck-pickup fs-3 fw-bold text-center p-2 text-light "></i>
+        <span class="col-4 ">
+            <div class="card bg-success shadow-lg">
+                <div class="card-header">
+                    <i class="fa-solid fa-truck-pickup fs-3 fw-bold text-center p-2 text-light "></i>
+                
+                    <h4 class="card-title text-light mt-1">Yol Yardımı</h4>
+                </div>
+                
                 <div class="card-body  ">
-                    <h4 class="card-title text-light">Yol Yardımı</h4>
+                    
                     <p class="card-text text-light fs-6 fw-light">Kaza ve arıza anında ücretsiz yol yardımı hizmetinden
-                        faydalanabilirsiniz.</p>
-                    <a href="#" class="btn btn-light  ">Daha Fazla Bilgi</a>
+                        faydalanabilirsiniz. </p>
+                   
                 </div>
+                <div class="card-footer"> <i href="#" class="btn btn-light  ">Daha Fazla Bilgi</i></div>
             </div>
         </span>
-
-
-
-
+        
     </div>
 </div>
+

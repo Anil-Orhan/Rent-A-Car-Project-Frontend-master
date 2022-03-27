@@ -1,0 +1,134 @@
+
+
+<div class="row">
+    <div class="col-md-9">
+        <form *ngIf="carIsSelected" [formGroup]="carUpdateForm"  (ngSubmit)="Submit()">
+            <h1 class="fs-2 fw-light text-start mb-5 "> Araç Güncelle</h1>
+        
+            <div class="row ">
+                <div class="col-6"> 
+                    <div class="mb-1">
+                        <label for="id" class="form-label">Araba ID:</label>
+                        <input type="number" [value]="selectedCar.carID"  style="background-color:rgb(204, 203, 203);" class="form-control text-lighter fs-6" id="id" placeholder='ID Otomatik Belirlenir ' disabled name="id">
+                      </div>
+                    <div class="mb-1">
+                    <label for="brand" class="form-label">Marka ID:</label>
+                    <input type="number "   formControlName="BrandID" class="form-control" id="brand" placeholder="Marka Kodu Giriniz" name="brand">
+                  </div>
+                  <div class="mb-1">
+                    <label for="pwd" class="form-label">Renk ID:</label>
+                    <input type="number" formControlName="ColorID" class="form-control" id="color" placeholder="Renk Kodu Giriniz" name="color">
+                  </div>
+                  <div class="mb-1">
+                    <label for="model" class="form-label">Model Yılı:</label>
+                    <input type="text"   formControlName="ModelYear" class="form-control" id="model" placeholder="Model Yılı Giriniz" name="model">
+                  </div>
+                  <div class="mb-1">
+                    <label for="depositFee" class="form-label">Depozito Bedeli:</label>
+                    <input type="number"  class="form-control"  formControlName="DepositFee" id="depositFee" placeholder="Depozito Bedelini Giriniz" name="depositFee">
+                  </div>
+                  <div class="mb-1">
+                    <label for="model" class="form-label">Günlük Ücret:</label>
+                    <input type="number"  class="form-control"  formControlName="DailyPrice" id="model" placeholder="Günlük Ücret Giriniz" name="model">
+                  </div>
+                  <div class="mb-1">
+                    <label for="description" class="form-label">Açıklama:</label>
+                    <input type="text" class="form-control" id="description"  formControlName="Description" placeholder="Açıklama" name="description">
+                  </div>
+                  <div class="mb-1">
+                    <label for="fuelType" class="form-label">Yakıt Tipi:</label>
+                    <input type="text"  class="form-control" id="fuelType"   formControlName="FuelType" placeholder="Yakıt Tipi Giriniz" name="fuelType">
+                  </div>
+                 
+                </div>
+                <div class="col-6">
+                    <div class="mb-1">
+                        <label for="kilometer" class="form-label">Kilometre:</label>
+                        <input type="number"  class="form-control" id="kilometer"  formControlName="Kilometer" placeholder="Anlık Kilometre Bilgisi Giriniz" name="kilometer">
+                      </div>
+                    <div class="mb-1">
+                        <label for="transmission" class="form-label">Vites Tipi:</label>
+                        <input type="text" class="form-control" id="transmission" formControlName="Transmission"  placeholder="Vites Tipi Bilgisi Giriniz" name="transmission">
+                    </div>
+                    <div class="mb-1">
+                        <label for="engineCapacity" class="form-label">Motor Hacmi:</label>
+                        <input type="text"   class="form-control" id="engineCapacity" formControlName="EngineCapacity"  placeholder="Motor Hacmi Giriniz" name="engineCapacity">
+                    </div>
+                    <div class="mb-1">
+                        <label for="bodyType" class="form-label">Araç Tipi:</label>
+                        <input type="text"   class="form-control" id="bodyType" formControlName="BodyStyle"  placeholder="Araç Tipi Giriniz" name="bodyType">
+                    </div>
+                    <div class="mb-1">
+                        <label for="minDriverAge" class="form-label">Minimum Sürücü Yaşı:</label>
+                        <input type="number"   class="form-control" id="minDriverAge" formControlName="MinDriverAge"  placeholder="Araç Tipi Giriniz" name="minDriverAge">
+                    </div>
+                    <div class="mb-1">
+                        <label for="minDrivingLicence" class="form-label">Minimum Ehliyet Süresi:</label>
+                        <input type="number"   class="form-control" id="minDrivingLicence"  formControlName="MinDrivingLicence"  placeholder="Minimum Ehliyet Süresini Giriniz" name="minDrivingLicence">
+                    </div>
+                    <div class="mb-1">
+                        <label for="carModel" class="form-label">Model:</label>
+                        <input type="text"  class="form-control" id="carModel" formControlName="CarModel"  placeholder="Model Bilgisi Giriniz" name="carModel">
+                    </div>
+                    <div class="mb-1">
+                        <label for="carRate" class="form-label">Puan:</label>
+                        <input type="number"   class="form-control" id="carRate" formControlName="CarRate"  placeholder="Puan Bilgisi Giriniz" name="carRate">
+                    </div>
+        
+        
+                </div>
+            </div>
+            <div class="row mt-3 fs-5 fw-light">
+                <div class="col-3">
+                    <div class="mb-1">
+                        <label for="airConditioning" class="form-label">Klima:</label>
+                        &nbsp;<input type="checkbox"  formControlName="AirConditioning" id="airConditioning" placeholder="Klima" name="airConditioning">
+                      </div>
+                     
+                </div>
+                <div class="col-3">
+                 
+                      <div class="mb-1">
+                        <label for="navigation" class="form-label">Navigasyon:</label>
+                        &nbsp;<input type="checkbox"   id="navigation"  formControlName="Navigation" placeholder="Klima" name="navigation">
+                      </div>
+                </div>
+                <div class="col-6 text-end mt-5">
+                    <button type="button" (click)="Cancel()" class="btn btn-danger btn-lg mx-4">İptal</button>
+                    <button type="submit" class="btn btn-success btn-lg">Güncelle</button>
+                </div>
+            </div>
+        
+           
+            
+          </form></div>
+    <div class="col-md-3 border-start border-success min-vh-100 overflow-auto" >
+
+        
+
+        <form [formGroup]="carSelectionForm" (ngSubmit)="carSelect()">
+                    
+            <div class="form-group">
+             
+                <label for="CarID"  class="fs-4 fw-normal">Araç Seçimi Yapınız!</label> 
+               
+                     <select class="form-select-sm"   id="CarID"   formControlName="CarID"> 
+                        <option [ngValue]="null" selected disabled>Araç Seçimi Yapınız!</option>
+                        <option *ngFor="let car of cars"   [ngValue]="car.carID"  >{{car.carModel}}</option>
+                     
+                         
+                      </select>
+                     
+                    
+                      <button class="btn btn-success mt-5" [disabled]="carSelectionForm.invalid" type="submit">Araç Bilgilerini Getir</button>
+            </div>
+                
+         
+          
+           
+                    
+            
+        </form></div>
+
+      
+</div>
