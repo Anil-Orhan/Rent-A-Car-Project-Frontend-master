@@ -49,7 +49,8 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { AdminComponent } from './components/admin/admin.component';
 import { UpdateCarComponent } from './components/carCRUDs/update-car/update-car.component';
-import * as mdb from 'mdb-angular-ui-kit'; // lib
+import * as mdb from 'mdb-angular-ui-kit';
+import { ListCarComponent } from './components/carCRUDs/list-car/list-car.component'; // lib
 
 
 
@@ -75,6 +76,7 @@ import * as mdb from 'mdb-angular-ui-kit'; // lib
     PayResultComponent,
     AdminComponent,
     UpdateCarComponent,
+    ListCarComponent,
     
   ],
   imports: [

@@ -18,6 +18,7 @@ import { Insurance } from 'src/app/models/insurance';
 import { Rental } from 'src/app/models/rental';
 import { PayService } from 'src/app/services/pay.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cardetail',
@@ -88,7 +89,8 @@ export class CardetailComponent implements OnInit {
     configRate: NgbRatingConfig,
     private insuranceService: InsuranceService,
     private payService: PayService,
-    private rentalService: RentalService
+    private rentalService: RentalService,
+    private toastrService:ToastrService
   ) {
     // customize default values of carousels used by this component tree
     config.showNavigationArrows = true;
@@ -110,6 +112,11 @@ export class CardetailComponent implements OnInit {
     });
     this.getInsurance(); //Sigortaları Getir
     this.setInsurancePrice(0, 1003); //Default Sigorta Bilgileri
+
+    this.rentalService.checkRentalByCarId(2).subscribe((responseRentalCheck)=>{
+      console.log(responseRentalCheck.success)
+      this.toastrService.info(responseRentalCheck.data+"")
+    });
    
   
   }
@@ -178,9 +185,6 @@ export class CardetailComponent implements OnInit {
       ReturnDate: this.carService.returnDate,
     };
     this.payService.setActiveRental(this.rental);
-
-    console.log("this.rental:"+this.rental.BillingPrice)
-    console.log("this.currentCarDailyPrice:"+this.currentCarDailyPrice)
    
   }
 

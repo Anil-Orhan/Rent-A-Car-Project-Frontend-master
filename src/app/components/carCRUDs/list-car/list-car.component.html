@@ -1,0 +1,45 @@
+<table class="table align-middle mb-3 mt-3 bg-white">
+    <thead class="bg-light">
+      <tr >
+        <th>Marka & Model</th>
+        <th>ID & Renk</th>
+        <th>Araç Durumu</th>
+        <th>Günlük Ücreti</th>
+        <th>İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of carList">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                [src]="setPath(car.CarImage.imagePath)"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+            <div class="container ms-4">
+              <p class="fw-bold mb-1">{{car.BrandName}} </p>
+              <p class="text-muted mb-0">{{car.CarModel}} </p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">   ID:  {{car.CarID}}</p>
+          <p class="text-muted mb-0">Renk - {{car.ColorName}}</p>
+        </td>
+        <td>
+          <span *ngIf="car.IsRental===true" class="badge badge-danger rounded-pill d-inline">Araç Uygun Değil</span>
+          <span *ngIf="car.IsRental===false" class="badge badge-success rounded-pill d-inline">Araç Müsait</span>
+       
+        </td>
+        <td>{{car.DailyPrice}}</td>
+        <td>
+          <button  type="button" class="btn btn-link btn-sm btn-rounded">
+            Düzenle
+          </button>
+        </td>
+      </tr>
+    
+    </tbody>
+  </table>

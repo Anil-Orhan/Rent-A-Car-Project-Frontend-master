@@ -15,7 +15,7 @@
             <button ngbNavLink ngbDropdownItem (click)="panelControlUpdateCar()">Araba Güncelle</button>
            
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem>Araç Listesi</button>
+            <button ngbDropdownItem (click)="panelControlListCar()">Araç Listesi</button>
           </div>
        
         </li>
@@ -61,6 +61,17 @@
 
 
    </div>
+
+    
+   <div  *ngIf="listCar" class="col-md-12"> 
+   
+    <app-list-car></app-list-car>
+
+
+
+</div>
+
+
 
   
 </div>

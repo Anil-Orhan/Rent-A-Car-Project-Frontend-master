@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
 
   addCar!:boolean;
   updateCar!:boolean;
+  listCar!:boolean;
  
 
   constructor() { }
@@ -25,12 +26,23 @@ export class AdminComponent implements OnInit {
     this.addCar=true
     //--//
     this.updateCar=false;
+    this.listCar=false;
   }
   panelControlUpdateCar()
   {
     this.updateCar=true;
     //----//
     this.addCar=false;
+    this.listCar=false;
+  
+  }
+
+  panelControlListCar()
+  {
+    this.listCar=true;
+    //----//
+    this.addCar=false;
+    this.updateCar=false;
   
   }
 

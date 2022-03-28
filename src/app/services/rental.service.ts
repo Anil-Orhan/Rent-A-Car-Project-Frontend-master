@@ -39,4 +39,23 @@ export class RentalService {
    
     return this.httpClient.post<EntityResponseModel<Rental>>(newPath,rental);
   }
+  
+rental:Rental={
+  RentalID: 0,
+  CarID: 0,
+  CustomerID: 0,
+  BillingPrice: 0,
+  InsurancesID: 0,
+  RentDate: new Date(),
+  ReturnDate: new Date()
+};
+  checkRentalByCarId(carId:number): Observable<ListResponseModel<Rental>>
+  {
+    let newPath=this.apiUrl+"checkrentalbycarid"
+    
+      this.rental.CarID=carId;
+
+     return this.httpClient.post<ListResponseModel<Rental>>(newPath,this.rental);
+   
+  }
 }
