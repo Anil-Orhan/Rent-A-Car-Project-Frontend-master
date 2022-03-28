@@ -1,6 +1,7 @@
 
 
 <div class="container">
+  
     <h1 class="fs-1 fw-light text-center m-5">Yönetici Paneli </h1>
 
     <hr>
@@ -11,24 +12,26 @@
           <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>Arabalar</i>
         
           <div ngbDropdownMenu class="">
-            <button ngbNavLink  ngbDropdownItem (click)="panelControlAddCar()">Araba Ekle</button>
-            <button ngbNavLink ngbDropdownItem (click)="panelControlUpdateCar()">Araba Güncelle</button>
            
+            <button ngbNavLink  ngbDropdownItem   value="carAdd" (click)="panelControl('car','add')" >Araba Ekle</button>
+            <button ngbNavLink ngbDropdownItem   value="carUpdate" (click)="panelControl('car','update')">Araba Güncelle</button>
+         
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem (click)="panelControlListCar()">Araç Listesi</button>
+            <button ngbDropdownItem  value="carList" (click)="panelControl('car','list')">Araç Listesi</button>
           </div>
+       
        
         </li>
 
         <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
-            <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>Markalar</i>
+            <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>İşlemler</i>
 
             <div ngbDropdownMenu class="">
-                <button ngbNavLink  ngbDropdownItem (click)="panelControlAddCar()">Marka Ekle</button>
-                <button ngbNavLink ngbDropdownItem (click)="panelControlUpdateCar()">Marka Güncelle</button>
+                <button ngbNavLink  ngbDropdownItem (click)="panelControl('brand','')">Marka İşlemleri</button>
+                <!-- <button ngbNavLink ngbDropdownItem (click)="panelControl('brand','update')">Marka Güncelle</button>
                
                 <div class="dropdown-divider"></div>
-                <button ngbDropdownItem>Marka Listesi</button>
+                <button ngbDropdownItem (click)="panelControl('brand','list')">Marka Listesi</button> -->
               </div>
         
         
@@ -36,15 +39,16 @@
         
       </ul>
       
-     
+    
    
       
    
     <div class=" text-center">
 
+    
         
 
-    <div  *ngIf="addCar" class="col-md-12"> 
+    <div  *ngIf="main==='car'&&alt==='add'" class="col-md-12"> 
        
 
          <app-add-car></app-add-car>
@@ -54,23 +58,72 @@
     </div>
     
    
-   <div  *ngIf="updateCar" class="col-md-12"> 
+   <div   *ngIf="main==='car'&&alt==='update'" class="col-md-12"> 
+   
    
         <app-update-car></app-update-car>
+        
   
 
 
    </div>
 
     
-   <div  *ngIf="listCar" class="col-md-12"> 
+    <div   *ngIf="main==='car'&&alt==='list'" class="col-md-12"> 
    
     <app-list-car></app-list-car>
+    
+    </div>
 
 
 
-</div>
 
+    <div class="row mt-5 " *ngIf="main==='brand'||main==='color'">
+      <div class="col-md-12 mb-5 p-0 " >
+          <h1 class="fs-2 fw-light mb-4 text-start" *ngIf="main==='brand'">Marka İşlemleri </h1>
+          <h1 class="fs-2 fw-light mb-4 text-start" *ngIf="main==='color'">Renk İşlemleri </h1>
+          <div class="col-4"><hr></div>
+        <div class="row">
+        <div class="col-7"> 
+          <div class="col-md-12 p-3 shadow-3-strong  border border-1 border-dark"> 
+            <h2 class="fs-4 fw-light"> Marka Listesi</h2>
+          <app-list-brands ></app-list-brands>
+          
+          </div></div>
+        <div class="col-5">
+          <div class="col-6 mb-5">   
+            <div   class="col-md-12 p-3 shadow-3-strong  border border-1 border-dark"> 
+       
+
+            <app-add-brand></app-add-brand>
+           
+       
+      
+       </div></div>
+          <div class="col-6"> <div  class="col-md-12"> 
+    
+    
+            <app-update-brand></app-update-brand>
+            
+       
+       
+       
+       </div></div>
+
+        </div>
+
+     
+     
+    
+   
+    
+     
+    
+      </div>
+    </div>
+    </div>
+
+    
 
 
   

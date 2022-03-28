@@ -1,0 +1,48 @@
+
+<h2 class="fs-3 fw-lighter my-2 text-center"> Marka Güncelle</h2>
+<div *ngIf="brandIsSelected===false">
+     <form [formGroup]="brandSelectionForm" (ngSubmit)="brandSelect()">
+                    
+    <div class="form-group">
+     
+        
+             <div>
+             <select class="form-select-sm"   id="BrandID"   formControlName="BrandID"> 
+                <option [ngValue]="null" selected disabled>Marka Seçimi Yapınız!</option>
+                <option *ngFor="let brand of brands"   [ngValue]="brand.brandID"> {{brand.brandName}} </option>
+             
+                 
+              </select>
+
+            </div>
+             
+            
+              <button class="btn btn-dark mt-5" [disabled]="brandSelectionForm.invalid" type="submit">Araç Bilgilerini Getir <i class="fa-solid fa-download"></i></button>
+    </div>
+
+</form></div>
+
+
+<form *ngIf="brandIsSelected===true" [formGroup]="brandUpdateForm"> 
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+      <div class="col">
+      
+        <div class="form text-start">
+          <label class="form-label " for="brandName">Marka Adı :</label>
+          <input formControlName="brandName" type="text" id="brandName"  class="form-control" />
+          
+        </div>
+      </div>
+      
+    </div>
+  
+  
+  
+   
+  
+    <!-- Submit button -->
+    <button (click)="updateBrand()"  type="submit" class="btn btn-outline-success btn-rounded btn-block mb-4 fs-6">Kaydet &nbsp; <i class="fa-regular fa-floppy-disk"></i></button>
+    <button  (click)="cancel()" type="button" class="btn btn-outline-danger btn-rounded btn-block mb-4 fs-6">İptal  &nbsp;<i class="fa-regular fa-circle-xmark"></i></button>
+  
+  </form>

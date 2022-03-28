@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { MdbDropdownMenuDirective } from 'mdb-angular-ui-kit/dropdown';
 
@@ -10,41 +11,25 @@ import { MdbDropdownMenuDirective } from 'mdb-angular-ui-kit/dropdown';
 })
 export class AdminComponent implements OnInit {
 
-  addCar!:boolean;
-  updateCar!:boolean;
-  listCar!:boolean;
- 
+main:string="";
+alt:string="";
 
-  constructor() { }
+
+  constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  panelControlAddCar()
+
+
+
+  panelControl(main:string,alt:string)
   {
 
-    this.addCar=true
-    //--//
-    this.updateCar=false;
-    this.listCar=false;
+    this.main=main;
+    this.alt=alt;
   }
-  panelControlUpdateCar()
-  {
-    this.updateCar=true;
-    //----//
-    this.addCar=false;
-    this.listCar=false;
+
   
-  }
-
-  panelControlListCar()
-  {
-    this.listCar=true;
-    //----//
-    this.addCar=false;
-    this.updateCar=false;
-  
-  }
-
 
 }

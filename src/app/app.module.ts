@@ -50,7 +50,11 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { AdminComponent } from './components/admin/admin.component';
 import { UpdateCarComponent } from './components/carCRUDs/update-car/update-car.component';
 import * as mdb from 'mdb-angular-ui-kit';
-import { ListCarComponent } from './components/carCRUDs/list-car/list-car.component'; // lib
+import { ListCarComponent } from './components/carCRUDs/list-car/list-car.component';
+
+import { AddBrandComponent } from './components/brandCRUDs/add-brand/add-brand.component';
+import { UpdateBrandComponent } from './components/brandCRUDs/update-brand/update-brand.component';
+import { ListBrandsComponent } from './components/brandCRUDs/list-brands/list-brands.component'; // lib
 
 
 
@@ -77,6 +81,9 @@ import { ListCarComponent } from './components/carCRUDs/list-car/list-car.compon
     AdminComponent,
     UpdateCarComponent,
     ListCarComponent,
+    AddBrandComponent,
+    UpdateBrandComponent,
+    ListBrandsComponent,
     
   ],
   imports: [
