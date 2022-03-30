@@ -59,7 +59,7 @@ export class UpdateBrandComponent implements OnInit {
      this.selectedBrand=Object.assign({},this.brands.find(p=>p.brandID==this.brandId))
      console.log(this.selectedBrand)
      
-     this.toastrService.info(""+this.selectedBrand.brandName)
+     this.toastrService.show(""+this.selectedBrand.brandName)
       this.brandIsSelected=true;     
       this.createBrandAddForm()
   }

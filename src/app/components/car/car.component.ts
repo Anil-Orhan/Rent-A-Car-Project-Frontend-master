@@ -13,7 +13,7 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
+  carList: Car[] = [];
   carDetails: CarDetails[] = [];
   carImages: CarImage[] = [];
   currentImage: CarImage = {
@@ -35,19 +35,21 @@ export class CarComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandID']) {
         this.getCarsByBrand(params['brandID']);
+        this.getCars();
 
-        console.log(" if (params['brandID']) Çalıştı");
       } else if (params['colorID']) {
         this.getCarsByColor(params['colorID']);
+        this.getCars();
       } else {
         this.getCarsDetails();
+        this.getCars();
       }
     });
     this.getCarImageAll();
   }
   getCars() {
     this.carService.getCars().subscribe((response) => {
-      this.cars = response.data;
+      this.carList = response.data;
       this.dataLoaded = true;
     });
   }
@@ -97,5 +99,9 @@ export class CarComponent implements OnInit {
       this.carImages.find((p) => p.carId == carId)!.imagePath;
 
     return url;
+  }
+
+  carGetter(cars:CarDetails):Car{
+    return this.carList.find(p=>p.carID==cars.carID)!;
   }
 }

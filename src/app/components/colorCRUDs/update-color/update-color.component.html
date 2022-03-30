@@ -1,0 +1,48 @@
+
+<h2 class="fs-3 fw-lighter my-2 text-center"> Renk Güncelle</h2>
+<div *ngIf="colorIsSelected===false">
+     <form [formGroup]="colorSelectionForm" (ngSubmit)="colorSelect()">
+                    
+    <div class="form-group">
+     
+        
+             <div>
+             <select class="form-select-sm"   id="ColorID"   formControlName="ColorID"> 
+                <option [ngValue]="null" selected disabled>Renk Seçimi Yapınız!</option>
+                <option *ngFor="let color of colors"   [ngValue]="color.colorID"> {{color.colorName}} </option>
+             
+                 
+              </select>
+
+            </div>
+             
+            
+              <button class="btn btn-dark mt-5" [disabled]="colorSelectionForm.invalid" type="submit">Renk Bilgisini Getir <i class="fa-solid fa-download"></i></button>
+    </div>
+
+</form></div>
+
+
+<form *ngIf="colorIsSelected===true" [formGroup]="colorUpdateForm"> 
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+      <div class="col">
+      
+        <div class="form text-start">
+          <label class="form-label " for="colorName">Renk Adı :</label>
+          <input formControlName="colorName" type="text" id="colorName"  class="form-control" />
+          
+        </div>
+      </div>
+      
+    </div>
+  
+  
+  
+   
+  
+    <!-- Submit button -->
+    
+    <button  (click)="cancel()" type="button" class="btn btn-outline-danger btn-rounded btn-block mb-4 fs-6">İptal  &nbsp;<i class="fa-regular fa-circle-xmark"></i></button>
+    <button (click)="updateColor()"  type="submit" class="btn btn-outline-success btn-rounded btn-block mb-4 fs-6">Kaydet &nbsp; <i class="fa-regular fa-floppy-disk"></i></button>
+  </form>

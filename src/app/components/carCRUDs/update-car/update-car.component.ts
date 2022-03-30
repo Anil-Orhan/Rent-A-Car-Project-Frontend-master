@@ -9,6 +9,7 @@ import { CarService } from 'src/app/services/car.service';
   templateUrl: './update-car.component.html',
   styleUrls: ['./update-car.component.css']
 })
+
 export class UpdateCarComponent implements OnInit {
 
   carUpdateForm!:FormGroup;

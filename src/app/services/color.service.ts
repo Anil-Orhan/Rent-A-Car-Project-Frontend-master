@@ -8,11 +8,21 @@ import { Color } from '../models/color';
   providedIn: 'root',
 })
 export class ColorService {
-  apiUrl = 'https://localhost:44391/api/Colors/getall';
+  apiUrl = 'https://localhost:44391/api/Colors/';
 
   constructor(private httpClient: HttpClient) {}
 
   getColors(): Observable<ListResponseModel<Color>> {
-    return this.httpClient.get<ListResponseModel<Color>>(this.apiUrl);
+    let newPath=this.apiUrl+"getall";
+    return this.httpClient.get<ListResponseModel<Color>>(newPath);
+  }
+  addColor(color:Color): Observable<ListResponseModel<Color>> {
+    let newPath=this.apiUrl+"add";
+    return this.httpClient.post<ListResponseModel<Color>>(newPath,color);
+  }
+
+  updateColor(color:Color): Observable<ListResponseModel<Color>> {
+    let newPath=this.apiUrl+"update";
+    return this.httpClient.post<ListResponseModel<Color>>(newPath,color);
   }
 }

@@ -1,6 +1,7 @@
 
-<div class="container">
 
+<div class="container my-5">
+<h1 class="fs-2 fw-normal"> Araç Listesi</h1>
 <table class="table align-middle mb-3 mt-3 bg-white">
     <thead class="bg-light">
       <tr >
@@ -18,8 +19,8 @@
             <img
                 [src]="setPath(car.CarImage.imagePath)"
                 alt=""
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
+                style="width: 75px; height: 75px"
+                class="rounded-2 "
                 />
             <div class="container ms-4">
               <p class="fw-bold mb-1">{{car.BrandName}} </p>
@@ -31,16 +32,23 @@
           <p class="fw-normal mb-1">   ID:  {{car.CarID}}</p>
           <p class="text-muted mb-0">Renk - {{car.ColorName}}</p>
         </td>
-        <td>
-          <span *ngIf="car.IsRental===true" class="badge badge-danger rounded-pill d-inline">Araç Uygun Değil</span>
-          <span *ngIf="car.IsRental===false" class="badge badge-success rounded-pill d-inline">Araç Müsait</span>
+        <td >
+          <span *ngIf="car.IsRental===true"  style="border-radius: 20em;" class="badge bg-danger  text-light">Araç Uygun Değil</span>
+          <span *ngIf="car.IsRental===false" style="border-radius: 20em;" class="badge bg-softgreen text-dark ">Araç Müsait</span>
+          <span *ngIf="car.IsRental===undefined" style="border-radius: 20em;" class="badge bg-secondary text-light " 
+          placement="top"
+        ngbPopover="Kiralama bilgisi sunucudan yeterince hızlı  getirilemedi. Sayfayı yenileyiniz ve sorun devam ederse sistem yöneticinize başvurunuz."  popoverTitle="Uyarı"
+          >Bilgi Alınamadı</span>
        
         </td>
-        <td>{{car.DailyPrice}}</td>
+        <td class="fw-bold">{{car.DailyPrice}} <i class="fa-solid fa-turkish-lira-sign text-danger"></i></td>
         <td>
-          <button  type="button" class="btn btn-link btn-sm btn-rounded">
-            Düzenle
-          </button>
+          
+          <button type="button" class="btn btn-warning me-2" placement="top"
+        ngbPopover={{carGetter(car).description}}  popoverTitle="Açıklamalar">
+        <b class="fw-normal">Açıklama</b>
+</button>
+        
         </td>
       </tr>
     

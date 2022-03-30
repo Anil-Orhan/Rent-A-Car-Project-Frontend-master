@@ -1,43 +1,56 @@
 
-
-<div class="container">
+    <div class="row m-0 py-1">
+      <div class="col-sm-3">  <h1 class="fs-1 fw-lighter text-center ">Yönetici Paneli </h1></div>
+      
+      <div class="col-sm-7 text-start  "> 
+        <div class="container justify-content-center mt-1">
+        <ul ngbNav #nav="ngbNav"  class="nav-tabs justify-content-start ">
+            
+            <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
+             
+              <i ngbNavLink href (click)="false" class=" fw-normal btn btn-dark btn-rounded" ngbDropdownToggle>Arabalar &nbsp;</i>
+            
+              <div ngbDropdownMenu class="">
+               
+                <button ngbNavLink  ngbDropdownItem   value="carAdd" (click)="panelControl('car','add')" >Araba Ekle</button>
+                <button ngbNavLink ngbDropdownItem   value="carUpdate" (click)="panelControl('car','update')">Araba Güncelle</button>
+             
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem  value="carList" (click)="panelControl('car','list')">Araç Listesi</button>
+              </div>
+           
+           
+            </li>
+    
+            <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
+                <i ngbNavLink href (click)="false" class=" fw-normal btn btn-dark btn-rounded " ngbDropdownToggle>İşlemler &nbsp;</i>
+                <div ngbDropdownMenu class="">
+                  <button ngbNavLink  ngbDropdownItem (click)="panelControl('brand','')">Marka İşlemleri</button>
+                  <button ngbNavLink  ngbDropdownItem (click)="panelControl('color','')">Renk İşlemleri</button>
+                  
+                </div>
+              
+               
+            </li>
+            <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
+              <i ngbNavLink href (click)="false" class=" fw-normal  btn btn-rounded btn-dark" ngbDropdownToggle>Kayıtlar &nbsp;</i>
   
-    <h1 class="fs-1 fw-light text-center m-5">Yönetici Paneli </h1>
+              <div ngbDropdownMenu class="">
+                  <button ngbNavLink  ngbDropdownItem (click)="panelControl('log','')">Kiralama Kayıtları</button>
+                </div>
+          </li>
+            
+          </ul> </div>
+        </div>
+    </div>
 
     <hr>
-    <ul ngbNav #nav="ngbNav"  class="nav-tabs justify-content-center">
-        
-        <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
-         
-          <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>Arabalar</i>
-        
-          <div ngbDropdownMenu class="">
-           
-            <button ngbNavLink  ngbDropdownItem   value="carAdd" (click)="panelControl('car','add')" >Araba Ekle</button>
-            <button ngbNavLink ngbDropdownItem   value="carUpdate" (click)="panelControl('car','update')">Araba Güncelle</button>
-         
-            <div class="dropdown-divider"></div>
-            <button ngbDropdownItem  value="carList" (click)="panelControl('car','list')">Araç Listesi</button>
-          </div>
-       
-       
-        </li>
+<div class="container">
+  
 
-        <li ngbDropdown  ngbNavLink  class="nav-item mx-1">
-            <i ngbNavLink href (click)="false" class=" fw-bold btn btn-dark" ngbDropdownToggle>İşlemler</i>
+  
 
-            <div ngbDropdownMenu class="">
-                <button ngbNavLink  ngbDropdownItem (click)="panelControl('brand','')">Marka İşlemleri</button>
-                <!-- <button ngbNavLink ngbDropdownItem (click)="panelControl('brand','update')">Marka Güncelle</button>
-               
-                <div class="dropdown-divider"></div>
-                <button ngbDropdownItem (click)="panelControl('brand','list')">Marka Listesi</button> -->
-              </div>
-        
-        
-        </li>
-        
-      </ul>
+   
       
     
    
@@ -86,8 +99,11 @@
         <div class="row">
         <div class="col-7"> 
           <div class="col-md-12 p-3 shadow-3-strong  border border-1 border-dark"> 
-            <h2 class="fs-4 fw-light"> Marka Listesi</h2>
-          <app-list-brands ></app-list-brands>
+            <h2 class="fs-4 fw-light " *ngIf="main==='brand'"> Marka Listesi</h2>
+            <h2 class="fs-4 fw-light" *ngIf="main==='color'"> Renk Listesi</h2>
+          <app-list-brands *ngIf="main==='brand'"></app-list-brands>
+          <app-list-color *ngIf="main==='color'" ></app-list-color>
+
           
           </div></div>
         <div class="col-5">
@@ -95,7 +111,8 @@
             <div   class="col-md-12 p-3 shadow-3-strong  border border-1 border-dark"> 
        
 
-            <app-add-brand></app-add-brand>
+            <app-add-brand *ngIf="main==='brand'"></app-add-brand>
+            <app-add-color *ngIf="main==='color'"></app-add-color>
            
        
       
@@ -103,7 +120,8 @@
           <div class="col-6"> <div  class="col-md-12"> 
     
     
-            <app-update-brand></app-update-brand>
+            <app-update-brand *ngIf="main==='brand'" ></app-update-brand>
+            <app-update-color *ngIf="main==='color'"></app-update-color>
             
        
        

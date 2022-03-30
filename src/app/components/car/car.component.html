@@ -21,29 +21,41 @@
 
         <div class="row row-cols-auto m-2 mt-1 ">
           <div class="col m-2 mt-2  " *ngFor="let cars of carDetails">
-            <div class="card shadow-lg bg-body rounded" style="width: 18rem; height:25rem; ">
+            <div class="card shadow-lg bg-body rounded" style="width: 18rem; height:28rem; ">
 
               <img class="card-img-top " style="height:13.5em;" [src]="[getImageSource(cars.carID)]" />
               <div class="card-body  " style="height:12rem;">
                 <div class="row ">
-                  <div class="col-lg-6"><i class="card-title fs-6">{{ cars.brandName }}</i></div>
-                  <div class="col-lg-6"> <i class="fs-5 text-success fw-lighter">{{ cars.dailyPrice }} ₺
+                  <div class="col-lg-6">
+                    <i class="card-title text-black fw-normal fs-6">{{ cars.brandName }}
+                    </i></div>
+                  <div class="col-lg-6"> <i class="fs-5 text-success fw-normal">{{ cars.dailyPrice }} ₺
 
 
                     </i><i class="text-muted fs-6 fw-lighter">/Gün</i>
                   </div>
+                  <h6 class="card-title fs-6 fw-lighter">{{ cars.modelYear }}</h6>
                 </div>
-
-
-                <h6 class="card-title fs-6 fw-lighter">{{ cars.modelYear }}</h6>
-
+                <div class="row"><div class="col-12">
+                   <i class="card-title fs-6 fw-light">{{(carGetter(cars)).carModel}}</i>
+                </div>   </div>
                 
 
+
+               
+
+                <div class="row  container mt-1 mb-0 pt-2">
+                  <div *ngIf="carGetter(cars).airConditioning===true" class="col-sm-3 text-center"><i class="fa-solid fa-snowflake"></i> <p  style="font-size: 10px;" class="text-muted">Klima</p></div>
+                  <div *ngIf="carGetter(cars).navigation===true" class="col-sm-5 text-center"> <i class="fa-solid fa-compass"></i> <p  style="font-size: 10px;" class="text-muted">Navigasyon</p></div>
+                  <div class="col-sm-4 text-center"><i class="fa-solid fa-money-bill-transfer"></i><br><p class="text-muted " style="font-size: 10px;">Provizyon<br>{{carGetter(cars).depositFee}} ₺</p>
+                  </div>
+                </div>
+
               </div>
-              <div class="card-footer ">
-                <div class="text-end">
+              <div class="card-footer  p-1">
+                <div class="text-end ">
                   
-               <i style="font-size: 10px;"  routerLink="/cars/detail/{{ cars.carID }}" class="btn btn-dark btn-rounded " data-mdb-ripple-color="dark">
+               <i style="font-size: 10px; border-radius: 10rem;"  routerLink="/cars/detail/{{ cars.carID }}" class="btn btn-dark btn-rounded" data-mdb-ripple-color="dark">
                 
                 Hemen Kirala &nbsp;
               

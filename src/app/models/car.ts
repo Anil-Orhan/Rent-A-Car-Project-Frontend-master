@@ -12,7 +12,7 @@ export interface Car {
   airConditioning: boolean;
   engineCapacity: number;
   bodyStyles: string;
-  navigation: string;
+  navigation: boolean;
   minDriverAge: number;
   minDrivingLicence: number;
   depositFee: number;

@@ -54,7 +54,7 @@ export class CardetailComponent implements OnInit {
     airConditioning: false,
     engineCapacity: 0,
     bodyStyles: 'default',
-    navigation: 'default',
+    navigation: false,
     minDriverAge: 0,
     minDrivingLicence: 0,
     depositFee: 0,

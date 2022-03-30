@@ -9,7 +9,8 @@ import { Rental } from 'src/app/models/rental';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { RentalService } from 'src/app/services/rental.service';
-import { __param } from 'tslib';
+
+
 
 @Component({
   selector: 'app-list-car',
@@ -44,33 +45,33 @@ export class ListCarComponent implements OnInit {
   }
    
 
- async getCars() {
-  await  this.carService.getCars().subscribe((response) => {
+  getCars() {
+    this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
       this.setListItem();
     });
-    await  this.carService.getCarsDetails().subscribe((response) => {
+      this.carService.getCarsDetails().subscribe((response) => {
       this.carDetails = response.data;
       
     });
    
   }
 
- async getCarImages(carId: number) {
-   await this.carImageService.getCarImageByCarId(carId).subscribe((response) => {
+  getCarImages(carId: number) {
+    this.carImageService.getCarImageByCarId(carId).subscribe((response) => {
       this.carImage = <CarImage>response.data.find((p) => p.carId == carId);
     });
   }
- async getRentals() {
-  await this.rentalService.getRentals().subscribe((response) => { response.data
+  getRentals() {
+   this.rentalService.getRentals().subscribe((response) => { response.data
       this.rentals = response.data;
      
     });
   }
-   async checkActiveRentals(rental:Rental)
+    checkActiveRentals(rental:Rental)
   {
 
-     await this.rentalService.checkRentalDate(rental).subscribe((response)=>
+      this.rentalService.checkRentalDate(rental).subscribe((response)=>
     {
        this.tempRentalCheck=response.success;
     });
@@ -128,38 +129,18 @@ export class ListCarComponent implements OnInit {
   }
   
 
-  CarStatus(bool:boolean)
-  {
-      if(bool==true){  return "Uygun" }
-      else{return "Araç Dolu"}
-      
-  }
+
 
   setPath(path: string) {
     return 'https://localhost:44391/Uploads/Images/' + path;
   }
 
-   Test(){
-
-
-    // console.log("Rentals ->")
-    // console.log(this.rentals)
-    // console.log("Cars ->")
-    // console.log(this.cars)
-    // console.log("Car Images ->")
-    // console.log(this.carImage)
-    // console.log("Active Rentals ->")
-    // console.log(this.activeRentals)
-    // console.log(this.carList)
-
-  
-   
-
-   
-  
+ 
+  carGetter(cars:carListModel):Car{
+    return this.cars.find(p=>p.carID==cars.CarID)!;
   }
-
   
     
+
  
 }

@@ -32,8 +32,8 @@
               <div class="btn-group">
                 <div  *ngFor="let inc of insurances"  class="m-0 ">
                 <input *ngIf="inc.insuranceId!=1003" type="radio"  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice,inc.insuranceId)" class="btn-check " name="options" [id]="inc.insuranceId" autocomplete="off" />
-                <label  *ngIf="inc.insuranceId!=1003" style="font-size:10px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; " class="btn btn-dark" [for]="inc.insuranceId">{{inc.insuranceName}} (Günlük +
-                  <i class="text-success fw-bold"> {{inc.insuranceDailyPrice}}₺</i>)</label>
+                <label  *ngIf="inc.insuranceId!=1003" style="font-size:10px; border-radius:0px; " class="btn btn-dark border-1 text-mu  border-left border-secondary insurance" [for]="inc.insuranceId">{{inc.insuranceName}}  
+                 <br> <i  class=" fw-bold text-linkgreen mt-4 py-5"> {{inc.insuranceDailyPrice}}₺</i> <span class="text-muted"> / Gün</span></label>
                 </div>
               </div>
             </div>
@@ -185,7 +185,7 @@
     ">
           Hesapla
         </button>
-        <button routerLink="/pay" *ngIf="payOK===true" (click)="setRental()" type="button" class="btn btn-success btn-lg mt-3" style="
+        <button routerLink="/pay" *ngIf="payOK===true" (click)="setRental()" type="button" class="btn btn-success btn-lg  mt-3" style="
           margin-right: 3em;
           padding: 10px;
           padding-right: 30px;
