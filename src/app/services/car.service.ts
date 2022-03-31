@@ -34,6 +34,7 @@ export class CarService {
   getCarsFilteredDetails(): Observable<ListResponseModel<CarDetails>> {
     let newPath = this.apiUrl + 'Cars/getfiltereddetails?minPrice='+this.minPrice+"&maxPrice="+this.maxPrice;
     return this.httpClient.get<ListResponseModel<CarDetails>>(newPath);
+    
   }
   getCarDetails(
     carID: number

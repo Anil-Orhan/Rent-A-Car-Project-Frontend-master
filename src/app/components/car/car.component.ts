@@ -81,7 +81,9 @@ export class CarComponent implements OnInit {
       this.carDetails=response.data;
       
       if(response.data.length>0){
-      this.toastrService.success("Filtrenize uygun "+response.data.length+" araç getirildi!","Başarılı")
+      this.toastrService.success("Filtrenize uygun "+response.data.length+" araç getirildi!","Başarılı");
+      this.carService.minPrice=0;
+      this.carService.maxPrice=0;
     }
     else{this.toastrService.error("Filtrenize uygun araç bulunamadı.","Başarısız")}
     
