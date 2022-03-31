@@ -12,16 +12,17 @@
 </div> -->
 <!-- Renge Göre Filtreleme Alanı Bitiş -->
 
-<style>
-  .active {
-    background-color: #198754;
-    border-color: #0d643c;
-  }
-</style>
 
+<h6 class="fs-6 fw-light text-muted text-center" > Renge Göre Filtrele</h6>
+<div class="overflow-auto m-2 " style="height: 10rem;">
+  <button *ngFor="let color of colors" (click)="setCurrentColor(color)" routerLink="/cars/color/{{ color.colorID }}"
+  [class]="getCurrentColorClass(color)" class=" rounded-2 border-0 p-1 fs-6 fw-light" aria-current="true"
+  ngbDropdownItem>
+  {{
+  color.colorName }}</button>
+</div>
 
-
-<div class=" text-center">
+<!-- <div class=" text-center">
   <div ngbDropdown placement="bottom-end  d-grid gap-2" class="">
     <button class="btn btn-success mb-3 flex-fill fs-6 fw-light " id="dropdownBasic2"
       style="padding: 0.25em  6rem 0.25em 6rem;" ngbDropdownToggle>Renk</button>
@@ -34,8 +35,13 @@
 
     </div>
   </div>
-</div>
-
+</div> -->
+<style>
+  .active {
+    background-color: #198754;
+    border-color: #0d643c;
+  }
+</style>
 <style>
   /* button:active {
     background: #198754;

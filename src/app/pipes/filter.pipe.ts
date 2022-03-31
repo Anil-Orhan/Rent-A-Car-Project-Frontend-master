@@ -16,6 +16,6 @@ export class FilterPipe implements PipeTransform {
         )
       : value;
 
-    console.log('Pipe içi log :' + filterText);
+   
   }
 }

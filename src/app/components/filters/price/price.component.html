@@ -1,0 +1,43 @@
+<h6 class="fs-6 fw-light text-muted text-center">Fiyata Göre Filtrele</h6>
+<div class="input-group row text-center m-2 shadow-sm my-2 py-3">
+  <form [formGroup]="priceFilterForm" (submit)="Submit()">
+    <div class="col">
+      <label for="rangeMin" [textContent]="min"></label><br>
+      <input
+        type="range"
+        (input)="Submit()"
+        id="rangeMin"
+        class="form-range"
+        min="0"
+        max="2500"
+        value="0"
+        formControlName="minPrice"
+        placeholder="Min"
+      />
+    </div>
+    <div class="col ">
+      <label for="rangeMin"  class="fs-6 fw-light" [textContent]="max"></label><br>
+      <input
+        type="range"
+        (input)="Submit()"
+        id="rangeMax"
+        class="form-range"
+        min="0"
+        max="2500"
+        value="2500"
+        formControlName="maxPrice"
+        placeholder="Max"
+      />
+    </div>
+    <button
+      type="button"
+      routerLink="/cars/price/{{ priceFilterForm.get('minPrice')?.value }}"
+      routerLink="/cars/price/{{ priceFilterForm.get('maxPrice')?.value }}"
+      (click)="Submit()"
+      class="btn btn-outline-success btn-sm mt-3 text-center"
+      value="Filtrele"
+    >
+      Fiyata Göre Filtrele
+    </button>
+  </form>
+</div>

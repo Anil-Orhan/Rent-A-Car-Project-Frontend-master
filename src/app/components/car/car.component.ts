@@ -6,6 +6,7 @@ import { CarImageService } from 'src/app/services/car-image.service';
 import { CarImage } from 'src/app/models/carImage';
 
 import { CarService } from 'src/app/services/car.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car',
@@ -22,17 +23,25 @@ export class CarComponent implements OnInit {
     imagePath: '',
     date: new Date(2017, 4, 4, 17, 23, 42, 11),
   };
+  filter!:{min:number,max:number};
+  min:number=0;
+  max:number=32000;
 
   dataLoaded: boolean = false;
 
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private carImageService: CarImageService
+    private carImageService: CarImageService,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
+      
+      
+      this.min=this.carService.minPrice;
+      this.max=this.carService.maxPrice;
       if (params['brandID']) {
         this.getCarsByBrand(params['brandID']);
         this.getCars();
@@ -40,9 +49,22 @@ export class CarComponent implements OnInit {
       } else if (params['colorID']) {
         this.getCarsByColor(params['colorID']);
         this.getCars();
-      } else {
+      }
+     else if(this.min>0||this.max>0){
+
+     
+      this.getCars()
+      this.getCarsFilter();
+      
+
+     }
+      
+      
+      else {
         this.getCarsDetails();
         this.getCars();
+        
+       
       }
     });
     this.getCarImageAll();
@@ -53,6 +75,27 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+  getCarsFilter() {
+    this.carService.getCarsFilteredDetails().subscribe((response)=>{
+
+      this.carDetails=response.data;
+      
+      if(response.data.length>0){
+      this.toastrService.success("Filtrenize uygun "+response.data.length+" araç getirildi!","Başarılı")
+    }
+    else{this.toastrService.error("Filtrenize uygun araç bulunamadı.","Başarısız")}
+    
+    })
+  
+
+    
+  
+
+  }
+  getCarDetailsFilter(){  this.carService.getCarsDetails().subscribe((response)=>{
+    this.carDetails=response.data.filter(p=>p.dailyPrice>=this.min&&p.dailyPrice<=this.max);
+    this.dataLoaded = true;
+  });}
   getCarsDetails() {
     this.carService.getCarsDetails().subscribe((response) => {
       this.carDetails = response.data;

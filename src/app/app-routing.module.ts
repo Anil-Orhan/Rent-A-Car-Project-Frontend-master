@@ -17,10 +17,12 @@ const routes: Routes = [
   { path: 'cars', component: CarComponent },
   { path: 'cars/brand/:brandID', component: CarComponent },
   { path: 'cars/color/:colorID', component: CarComponent },
+  { path: 'cars/price/:minPrice', component: CarComponent },
+ 
   { path: 'cars/detail/:carID', component: CardetailComponent },
   { path: 'cars/detail', component: CardetailComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'car', component: CarComponent },
+ 
   { path: 'pay', component: PayComponent },
   { path: 'add', component: AddCarComponent },
   { path: 'update-car', component: UpdateCarComponent },

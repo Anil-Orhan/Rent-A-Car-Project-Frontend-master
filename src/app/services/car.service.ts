@@ -17,8 +17,11 @@ export class CarService {
   insurancePrice = 0;
   insuranceId = 0;
   filterText = '';
-
+  minPrice=0;
+  maxPrice=0;
   constructor(private httpClient: HttpClient) {}
+
+
 
   getCars(): Observable<ListResponseModel<Car>> {
     let newPath = this.apiUrl + 'Cars/getall';
@@ -26,6 +29,10 @@ export class CarService {
   }
   getCarsDetails(): Observable<ListResponseModel<CarDetails>> {
     let newPath = this.apiUrl + 'Cars/getdetails';
+    return this.httpClient.get<ListResponseModel<CarDetails>>(newPath);
+  }
+  getCarsFilteredDetails(): Observable<ListResponseModel<CarDetails>> {
+    let newPath = this.apiUrl + 'Cars/getfiltereddetails?minPrice='+this.minPrice+"&maxPrice="+this.maxPrice;
     return this.httpClient.get<ListResponseModel<CarDetails>>(newPath);
   }
   getCarDetails(
@@ -76,4 +83,13 @@ export class CarService {
       return this.httpClient.post<ListResponseModel<Car>>(newPath,Car);
     }
   
+
+    PriceFilter(minPrice:number,maxPrice:number)
+    {
+      
+      this.minPrice=minPrice;
+      this.maxPrice=maxPrice;
+    
+
+    }
 }

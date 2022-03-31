@@ -9,9 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
-import { BrandComponent } from './components/brand/brand.component';
+import { BrandComponent } from './components/filters/brand/brand.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { ColorComponent } from './components/color/color.component';
+import { ColorComponent } from './components/filters/color/color.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -43,7 +43,9 @@ import { UpdateBrandComponent } from './components/brandCRUDs/update-brand/updat
 import { ListBrandsComponent } from './components/brandCRUDs/list-brands/list-brands.component';
 import { AddColorComponent } from './components/colorCRUDs/add-color/add-color.component';
 import { UpdateColorComponent } from './components/colorCRUDs/update-color/update-color.component';
-import { ListColorComponent } from './components/colorCRUDs/list-color/list-color.component'; // lib
+import { ListColorComponent } from './components/colorCRUDs/list-color/list-color.component';
+import { PriceComponent } from './components/filters/price/price.component';
+import { FilterWithPricePipe } from './pipes/filter-with-price.pipe'; // lib
 
 
 
@@ -76,6 +78,8 @@ import { ListColorComponent } from './components/colorCRUDs/list-color/list-colo
     AddColorComponent,
     UpdateColorComponent,
     ListColorComponent,
+    PriceComponent,
+    FilterWithPricePipe,
     
   ],
   imports: [
