@@ -8,7 +8,7 @@ import { Brand } from '../models/brand';
   providedIn: 'root',
 })
 export class BrandService {
-  apiUrl = 'https://localhost:44391/api/Brands/';
+  apiUrl = 'https://aoprojectslive.xyz/api/Brands/';
 
   constructor(private httpClient: HttpClient) {}
 

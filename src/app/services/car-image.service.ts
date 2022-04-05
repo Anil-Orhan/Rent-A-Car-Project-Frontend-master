@@ -9,7 +9,7 @@ import { ListResponseModel } from 'src/app/models/listResponseModel';
   providedIn: 'root',
 })
 export class CarImageService {
-  ApiUrl: string = 'https://localhost:44391/api/CarImages/';
+  ApiUrl: string = 'https://aoprojectslive.xyz/api/CarImages/';
   constructor(private httpClient: HttpClient) {}
 
   getCarImageByCarId(carId: number): Observable<ListResponseModel<CarImage>> {

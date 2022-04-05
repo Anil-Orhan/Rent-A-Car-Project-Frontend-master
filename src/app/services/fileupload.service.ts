@@ -9,7 +9,7 @@ import{imageUpload} from 'src/app/models/imageUpload'
   providedIn: 'root'
 })
 export class FileuploadService {
-apiUrl="https://localhost:44391/api/CarImages/add";
+apiUrl="https://aoprojectslive.xyz/api/CarImages/add";
 
   constructor(private httpClient:HttpClient) { }
 

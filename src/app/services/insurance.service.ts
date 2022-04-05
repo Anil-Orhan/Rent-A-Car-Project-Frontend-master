@@ -8,7 +8,7 @@ import { Insurance } from '../models/insurance';
   providedIn: 'root',
 })
 export class InsuranceService {
-  apiUrl = 'https://localhost:44391/api/Insurances/getall';
+  apiUrl = 'https://aoprojectslive.xyz/api/Insurances/getall';
   constructor(private httpClient: HttpClient) {}
 
   getInsurance(): Observable<ListResponseModel<Insurance>> {

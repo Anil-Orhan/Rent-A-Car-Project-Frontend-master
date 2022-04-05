@@ -13,7 +13,7 @@ import { ResponseModel } from '../models/responseModel';
 export class PayService {
   activeRental: Rental={RentalID:0,CarID:0,BillingPrice:0,CustomerID:0,RentDate:new Date(Date.now()),ReturnDate:new Date(Date.now()),InsurancesID:0 }
   constructor(private httpClient: HttpClient) {}
-  apiUrl: string = 'https://localhost:44391/api/Pays/pay';
+  apiUrl: string = 'https://aoprojectslive.xyz/api/Pays/pay';
   result: ResponseModel = { message: '', success: false };
 
   

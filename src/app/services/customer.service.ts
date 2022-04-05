@@ -8,7 +8,7 @@ import { Customer } from '../models/customer';
   providedIn: 'root',
 })
 export class CustomerService {
-  apiUrl = 'https://localhost:44391/api/Customers/getall';
+  apiUrl = 'https://aoprojectslive.xyz/api/Customers/getall';
 
   constructor(private httpClient: HttpClient) {}
 

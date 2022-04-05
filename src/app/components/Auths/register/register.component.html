@@ -11,18 +11,18 @@
   
                     <h2 class="text-center mb-5">Kayıt Formu</h2>
   
-                    <form >
+                    <form [formGroup]="registerForm" (submit)="register()" >
                       <!-- 2 column grid layout with text inputs for the first and last names -->
                       <div class="row">
                         <div class="col-12 col-md-6 mb-4">
                           <div class="form-outline form-white">
-                            <input type="text" id="form3Example1" class="form-control form-control-lg" />
+                            <input type="text" formControlName="firstName" id="firstName" class="form-control form-control-lg" />
                             <label class="form-label" for="form3Example1">Ad</label>
                           </div>
                         </div>
                         <div class="col-12 col-md-6 mb-4">
                           <div class="form-outline form-white">
-                            <input type="text" id="form3Example2" class="form-control form-control-lg" />
+                            <input type="text" id="lastName" formControlName="lastName" class="form-control form-control-lg" />
                             <label class="form-label" for="form3Example2">Soyad</label>
                           </div>
                         </div>
@@ -30,13 +30,13 @@
   
                       <!-- Email input -->
                       <div class="form-outline form-white mb-4">
-                        <input type="email" id="form3Example3" class="form-control form-control-lg" />
+                        <input type="email" id="email"  formControlName="email" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example3">E-Posta Adresi</label>
                       </div>
   
                       <!-- Password input -->
                       <div class="form-outline form-white mb-4">
-                        <input type="password" id="form3Example4" class="form-control form-control-lg" />
+                        <input type="password" id="password" formControlName="password" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example4">Parola</label>
                       </div>
   

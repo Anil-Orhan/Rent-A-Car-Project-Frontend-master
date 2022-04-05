@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navi',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
   currentFilterText: string = '';
-  constructor() {}
+  constructor(private authService:AuthService) {}
 
   ngOnInit(): void {}
+
+  checkLogin(){
+
+    let user= this.authService.getUser();
+    return user;
+   
+  }
+
+  logout(){this.authService.logout()}
+
 }

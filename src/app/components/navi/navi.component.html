@@ -38,7 +38,7 @@
         <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search" />
         <button class="btn btn-dark" type="submit">Ara</button>
       </form> -->
-      <form class="d-flex">
+      <form class="d-flex" *ngIf="checkLogin()===false">
         <button class="btn btn-outline-light ms-4"  routerLink="register" type="submit">
           Kayıt Ol
         </button>
@@ -46,6 +46,13 @@
           Giriş Yap
         </button>
       </form>
+     <div class="row mx-5" *ngIf="checkLogin()!=false">
+       <div class="col-8"><label class="fw-light fs-6 text-light text-center" ><i class="text-light fs-6"> Hoşgeldiniz </i>   <br> <i class="fa-solid fa-user"></i> {{checkLogin()}}</label></div>
+       <div class="col-4"> <button class="btn btn-outline-light ms-2" routerLink="main" (click)="logout()" >
+        Çıkış Yap
+      </button></div>
+     </div>
+      
     </div>
   </div>
 </nav>

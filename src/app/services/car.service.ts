@@ -10,7 +10,7 @@ import { SingleEntityResponseModel } from '../models/SingleEntityResponseModel';
   providedIn: 'root',
 })
 export class CarService {
-  apiUrl = 'https://localhost:44391/api/';
+  apiUrl = 'https://aoprojectslive.xyz/api/';
   rentDays = 0;
   rentDate=new Date();
   returnDate=new Date();

@@ -140,7 +140,7 @@ export class CarComponent implements OnInit {
 
   getImageSource(carId: number) {
     let url: string =
-      'https://localhost:44391/Uploads/Images/' +
+      'https://aoprojectslive.xyz/Uploads/Images/' +
       this.carImages.find((p) => p.carId == carId)!.imagePath;
 
     return url;

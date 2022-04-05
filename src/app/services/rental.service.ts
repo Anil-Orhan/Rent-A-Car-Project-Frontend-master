@@ -10,7 +10,7 @@ import { EntityResponseModel } from '../models/entityResponseModel';
   providedIn: 'root',
 })
 export class RentalService {
-  apiUrl = 'https://localhost:44391/api/Rentals/';
+  apiUrl = 'https://aoprojectslive.xyz/api/Rentals/';
  
   constructor(private httpClient: HttpClient) {}
 
