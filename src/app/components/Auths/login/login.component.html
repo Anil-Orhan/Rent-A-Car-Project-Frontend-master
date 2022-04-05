@@ -1,0 +1,46 @@
+<section class="intro shadow-lg">
+    <div class="mask d-flex align-items-center h-100 gradient-custom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-xl-10">
+            <div class="card">
+              <div class="card-body p-5">
+  
+                <div class="row d-flex align-items-center">
+                  <div class="col-md-6 col-xl-7">
+  
+                    <div class="text-center pt-md-5 pb-5 my-md-5" style="padding-right: 24px;">
+                      <img src="https://media.istockphoto.com/photos/white-3d-car-luxury-suv-picture-id490313551?b=1&k=20&m=490313551&s=170667a&w=0&h=KYWINiwrBebgXHnwohpHJwZto387zjfca9fhP_miNLA="> 
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 col-xl-4 text-center">
+  
+                    <h2 class="fw-bold mb-4 pb-2">Üye Girişi</h2>
+                    <form [formGroup]="loginForm"  (submit)="login()">
+                    <div class="form-outline mb-3">
+                      <input type="email" id="typeEmail"  formControlName="email" placeholder="name@example.com" class="form-control form-control-lg" />
+                      <label class="form-label" for="typeEmail">Email</label>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" id="typePassword" formControlName="password"  placeholder="Password" class="form-control form-control-lg" />
+                      <label class="form-label" for="typePassword">Parola</label>
+                    </div>
+  
+                    <div class="text-center">
+                      <button class="btn btn-dark btn-block btn-lg"  type="submit">Giriş Yap</button>
+                      <p class="small mt-3 mb-4 text-muted"><span class="fw-bold"><a href="#!" class="text-muted">Kullanıcı Adımı</a> / <a href="#!" class="text-muted">Parolamı</a>  </span> Unuttum</p>
+                      <i  class="  link-secondary signUpLink">Üye değil misiniz? <i class="fas fa-long-arrow-alt-right"></i></i>
+                    </div>
+                </form>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

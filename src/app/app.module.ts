@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
 import { BrandComponent } from './components/filters/brand/brand.component';
@@ -45,7 +45,11 @@ import { AddColorComponent } from './components/colorCRUDs/add-color/add-color.c
 import { UpdateColorComponent } from './components/colorCRUDs/update-color/update-color.component';
 import { ListColorComponent } from './components/colorCRUDs/list-color/list-color.component';
 import { PriceComponent } from './components/filters/price/price.component';
-import { FilterWithPricePipe } from './pipes/filter-with-price.pipe'; // lib
+import { FilterWithPricePipe } from './pipes/filter-with-price.pipe';
+import { RegisterComponent } from './components/Auths/register/register.component';
+import { LoginComponent } from './components/Auths/login/login.component';
+import { ForgetpasswordComponent } from './components/Auths/forgetpassword/forgetpassword.component'; // lib
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -80,6 +84,9 @@ import { FilterWithPricePipe } from './pipes/filter-with-price.pipe'; // lib
     ListColorComponent,
     PriceComponent,
     FilterWithPricePipe,
+    RegisterComponent,
+    LoginComponent,
+    ForgetpasswordComponent,
     
   ],
   imports: [
@@ -96,7 +103,10 @@ import { FilterWithPricePipe } from './pipes/filter-with-price.pipe'; // lib
    
     
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  
+  ],
 
   bootstrap: [AppComponent],
 })

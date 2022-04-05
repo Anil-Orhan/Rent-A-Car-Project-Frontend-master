@@ -32,12 +32,15 @@ export class PriceComponent implements OnInit {
  min:number=0;
  max:number=2500;
 
+
+ updatePrice()
+ { this.min=this.priceFilterForm.get("minPrice")?.value;
+ this.max=this.priceFilterForm.get("maxPrice")?.value; }
   Submit()
   {
   
 
-     this.min=this.priceFilterForm.get("minPrice")?.value;
-     this.max=this.priceFilterForm.get("maxPrice")?.value; 
+    
      this.carService.PriceFilter(this.min,this.max);
    
    

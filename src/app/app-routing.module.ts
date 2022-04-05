@@ -10,6 +10,9 @@ import { MainComponent } from './components/main/main.component';
 import { PayResultComponent } from './components/pay-result/pay-result.component';
 import { PayComponent } from './components/pay/pay.component';
 import { UpdateCarComponent } from './components/carCRUDs/update-car/update-car.component';
+import { LoginComponent } from './components/Auths/login/login.component';
+import { RegisterComponent } from './components/Auths/register/register.component';
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
@@ -18,16 +21,19 @@ const routes: Routes = [
   { path: 'cars/brand/:brandID', component: CarComponent },
   { path: 'cars/color/:colorID', component: CarComponent },
   { path: 'cars/price/:minPrice', component: CarComponent },
+  { path: 'cars/price/:maxPrice', component: CarComponent },
  
   { path: 'cars/detail/:carID', component: CardetailComponent },
   { path: 'cars/detail', component: CardetailComponent },
   { path: 'about', component: AboutComponent },
  
-  { path: 'pay', component: PayComponent },
-  { path: 'add', component: AddCarComponent },
-  { path: 'update-car', component: UpdateCarComponent },
-  { path: 'pay-result', component: PayResultComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'pay', component: PayComponent ,canActivate:[LoginGuard]},
+  { path: 'add', component: AddCarComponent  ,canActivate:[LoginGuard]},
+  { path: 'update-car', component: UpdateCarComponent ,canActivate:[LoginGuard] },
+  { path: 'pay-result', component: PayResultComponent ,canActivate:[LoginGuard]},
+  { path: 'admin', component: AdminComponent ,canActivate:[LoginGuard]},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

@@ -5,7 +5,8 @@
       <label for="rangeMin" [textContent]="min"></label><br>
       <input
         type="range"
-        (input)="Submit()"
+        (input)="updatePrice()"
+        
         id="rangeMin"
         class="form-range"
         min="0"
@@ -19,7 +20,8 @@
       <label for="rangeMin"  class="fs-6 fw-light" [textContent]="max"></label><br>
       <input
         type="range"
-        (input)="Submit()"
+        (input)="updatePrice()"
+        
         id="rangeMax"
         class="form-range"
         min="0"
