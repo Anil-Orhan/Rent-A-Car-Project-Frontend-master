@@ -11,16 +11,16 @@
           <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about">Hakkımızda</a>
+          <a class="nav-link" (click)="tokencheck()" routerLink="/about">Hakkımızda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cars">Araç Kirala</a>
+          <a class="nav-link" (click)="tokencheck()" routerLink="/cars">Araç Kirala</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin">Admin Panel</a>
+          <a class="nav-link" (click)="tokencheck()" routerLink="/admin">Admin Panel</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" (click)="tokencheck()" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             İştiraklerimiz
           </a>
@@ -46,12 +46,18 @@
           Giriş Yap
         </button>
       </form>
-     <div class="row mx-5" *ngIf="checkLogin()!=false">
-       <div class="col-8"><label class="fw-light fs-6 text-light text-center" ><i class="text-light fs-6"> Hoşgeldiniz </i>   <br> <i class="fa-solid fa-user"></i> {{checkLogin()}}</label></div>
-       <div class="col-4"> <button class="btn btn-outline-light ms-2" routerLink="main" (click)="logout()" >
-        Çıkış Yap
-      </button></div>
-     </div>
+      <div *ngIf="checkLogin()!=false" class="d-inline-block text-center mx-5 px-3" ngbDropdown #myDrop="ngbDropdown">
+        <i type="submit" class="fa-solid fa-circle-user me-2 bg-transparent border-0 fs-2 text-light" id="dropdownManual"  (click)="myDrop.open()"></i><br>
+        <i *ngIf=" getUser()===true" class="text-light fw-light fs-6" >{{userFullName}}</i>
+        <div ngbDropdownMenu  aria-labelledby="dropdownManual">
+          <button ngbDropdownItem>Profil</button>
+          <button ngbDropdownItem>Kiralama Geçmişim</button>
+          <hr>
+          <button ngbDropdownItem routerLink="" (click)="logout()">Çıkış Yap</button>
+        </div>
+      </div>
+      
+  
       
     </div>
   </div>

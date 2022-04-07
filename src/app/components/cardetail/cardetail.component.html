@@ -6,7 +6,7 @@
           <!-- ARAÇ RESMİ -->
           <div class="col-12" style="margin-top: 2em">
             <!-- <img class="rounded img-fluid img-thumbnail" [src]="[getImageSource(carImage)]" /> -->
-            <ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows"
+            <ngb-carousel [showNavigationArrows]="showNavigationArrows"
               [showNavigationIndicators]="showNavigationIndicators">
               <ng-template ngbSlide *ngFor="let image of carImages">
                 <div class="picsum-img-wrapper">
@@ -30,9 +30,9 @@
             <div class="col-sm-6">
               <i class="fs-6 fw-light">Ek kasko ve sigorta seçenekleri</i>
               <div class="btn-group">
-                <div  *ngFor="let inc of insurances"  class="m-0 ">
-                <input *ngIf="inc.insuranceId!=1003" type="radio"  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice,inc.insuranceId)" class="btn-check " name="options" [id]="inc.insuranceId" autocomplete="off" />
-                <label  *ngIf="inc.insuranceId!=1003" style="font-size:10px; border-radius:0px; " class="btn btn-dark border-1 text-mu  border-left border-secondary insurance" [for]="inc.insuranceId">{{inc.insuranceName}}  
+                <div  *ngFor="let inc of insurances"  class="m-0  ">
+                <input *ngIf="inc.insuranceId!=5" type="radio"  value="{{inc.insuranceDailyPrice}}" (input)="setInsurancePrice(inc.insuranceDailyPrice,inc.insuranceId)" class="btn-check" name="options" [id]="inc.insuranceId" autocomplete="off" />
+                <label  *ngIf="inc.insuranceId!=5" style="font-size:10px; border-radius:0px; " class="btn btn-outline-dark border-1 text-mu  border-left border-secondary insurance" [for]="inc.insuranceId">{{inc.insuranceName}}  
                  <br> <i  class=" fw-bold text-linkgreen mt-4 py-5"> {{inc.insuranceDailyPrice}}₺</i> <span class="text-muted"> / Gün</span></label>
                 </div>
               </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="row m-1  fs-6 fw-light ">
             <i   *ngIf="CarOK===true"      class="text-danger"> <i class="fa-solid fa-circle-xmark"></i> {{message}} </i>
-            <i  *ngIf="CarOK===false" class="text-success"><i class="fa-solid fa-circle-check"></i> Araç Belirtilen Tarih Aralığında Müsait </i></div>
+            <i  *ngIf="CarOK===false" class="text-linkgreen"><i class="fa-solid fa-circle-check"></i> Araç Belirtilen Tarih Aralığında Müsait </i></div>
          
        
       </div>
@@ -58,7 +58,7 @@
             <i class="fs-2">{{ carDetail.brandName }}</i><br />
             <i class="fs-4">{{ car.carModel }}</i>
             <p class="fs-5">{{ car.modelYear }}</p>
-            <i class="fs-4 text-success fw-bold">{{ car.dailyPrice }} ₺</i>
+            <i class="fs-4 text-linkgreen fw-bold">{{ car.dailyPrice }} ₺</i>
             <i class="text-muted fs-5"> / 1 Gün İçin</i>
           </div>
           <div class="col-6 text-end">

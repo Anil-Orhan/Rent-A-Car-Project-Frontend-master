@@ -46,7 +46,7 @@ export class UpdateCarComponent implements OnInit {
       Transmission: new FormControl(this.selectedCar.transmission, [Validators.required]),
       AirConditioning: new FormControl(this.selectedCar.airConditioning, [Validators.required]),
       EngineCapacity: new FormControl(this.selectedCar.engineCapacity, [Validators.required]),
-      BodyStyle: new FormControl(this.selectedCar.bodyStyles, [Validators.required]),
+      BodyStyles: new FormControl(this.selectedCar.bodyStyles, [Validators.required]),
       Navigation: new FormControl(this.selectedCar.navigation, [Validators.required]),
       MinDriverAge: new FormControl(this.selectedCar.minDriverAge, [Validators.required]),
       MinDrivingLicence: new FormControl(this.selectedCar.minDrivingLicence, [Validators.required]),
@@ -108,3 +108,4 @@ export class UpdateCarComponent implements OnInit {
 
   Cancel(){ this.carIsSelected=false}
 }
+

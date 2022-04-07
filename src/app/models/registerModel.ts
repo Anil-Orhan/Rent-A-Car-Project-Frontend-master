@@ -4,5 +4,6 @@ export interface RegisterModel{
     password:string;
     firstName:string;
     lastName:string;
+    identificationNumber:string;
     
 }

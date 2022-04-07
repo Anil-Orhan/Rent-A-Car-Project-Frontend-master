@@ -27,22 +27,22 @@
 
         <div class="row row-cols-auto m-2 mt-1 ">
           <div class="col m-2 mt-2  " *ngFor="let cars of carDetails ">
-            <div class="card shadow-lg bg-body rounded" style="width: 18rem; height:28rem; ">
+            <div class="card shadow-lg bg-body rounded text-start" style="width: 18rem; height:28rem; ">
 
               <img class="card-img-top " style="height:13.5em;" [src]="[getImageSource(cars.carID)]" />
               <div class="card-body  " style="height:12rem;">
                 <div class="row ">
                   <div class="col-lg-6">
-                    <i class="card-title text-black fw-normal fs-6">{{ cars.brandName }}
+                    <i class="card-title text-black fw-normal fs-6 text-start">{{ cars.brandName }}
                     </i></div>
-                  <div class="col-lg-6"> <i class="fs-5 text-success fw-normal">{{ cars.dailyPrice }} ₺
+                  <div class="col-lg-6"> <i class="fs-5 text-linkgreen fw-normal">{{ cars.dailyPrice }} ₺
 
 
                     </i><i class="text-muted fs-6 fw-lighter">/Gün</i>
                   </div>
-                  <h6 class="card-title fs-6 fw-lighter">{{ cars.modelYear }}</h6>
+                  <h6 class="card-title fs-6 fw-lighter text-start">{{ cars.modelYear }}</h6>
                 </div>
-                <div class="row"><div class="col-12">
+                <div class="row text-start"><div class="col-12">
                    <i class="card-title fs-6 fw-light">{{(carGetter(cars)).carModel}}</i>
                 </div>   </div>
                 

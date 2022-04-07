@@ -4,19 +4,20 @@ import { LoginModel } from '../models/loginModel';
 import { EntityResponseModel } from '../models/entityResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { RegisterModel } from '../models/registerModel';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  expirationTime!:Date;
   apiUrl = 'https://aoprojectslive.xyz/api/Auth/';
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private toastrService:ToastrService) { }
 
   login(loginModel:LoginModel){
     return this.httpClient.post<EntityResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
   }
-  logout(){localStorage.clear()}
+  logout(){localStorage.clear(); this.toastrService.show("Çıkış Yapıldı") }
 
   register(registerModel:RegisterModel){
     return this.httpClient.post<EntityResponseModel<TokenModel>>(this.apiUrl+"register",registerModel)
@@ -38,11 +39,11 @@ export class AuthService {
   isAuthenticated(){
     if(localStorage.getItem("token")){
       return true;
-      console.log("isAuth Çalıştı")
+ 
     }
     else{
       return false;
-      console.log("isAuth Çalıştı false")
+     
     }
   }
 

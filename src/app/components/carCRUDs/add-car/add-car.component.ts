@@ -94,7 +94,7 @@ export class AddCarComponent implements OnInit {
 
     if (this.myForm.valid) {
       let result = this.httpClient
-        .post('https://localhost:44391/api/CarImages/add', formData)
+        .post('https://aoprojectslive.xyz/api/CarImages/add', formData)
         .subscribe((res) => {
           console.log(res);
           alert('Uploaded Successfully.');

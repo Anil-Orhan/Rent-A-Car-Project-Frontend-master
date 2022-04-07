@@ -203,3 +203,10 @@ form .btn.btn-primary:hover {
     font-size: 12px;
   }
 }
+:host .alert-custom {
+  color: #5a5a5a;
+  background-color: #fcfd9c;
+  border-color: #807305;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}

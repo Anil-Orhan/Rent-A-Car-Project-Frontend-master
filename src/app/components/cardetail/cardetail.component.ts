@@ -80,7 +80,7 @@ export class CardetailComponent implements OnInit {
   totalPrice: number = 0;
   showNavigationArrows = true;
   showNavigationIndicators = false;
-  images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
+ 
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
@@ -106,19 +106,13 @@ export class CardetailComponent implements OnInit {
       this.getCarDetails(params['carID']);
 
       this.activatedRoute.params.subscribe((params) => {
-        this.getCarById(this.car.carID);
         this.getCarImageByCarId(params['carID']);
+        this.getCarById(this.car.carID);
+       
       });
     });
     this.getInsurance(); //Sigortaları Getir
-    this.setInsurancePrice(0, 1003); //Default Sigorta Bilgileri
-
-    this.rentalService.checkRentalByCarId(2).subscribe((responseRentalCheck)=>{
-      console.log(responseRentalCheck.success)
-      this.toastrService.info(responseRentalCheck.data+"")
-    });
-   
-  
+    this.setInsurancePrice(0, 5); //Default Sigorta Bilgileri
   }
 
   getCarByID(carID: number) {

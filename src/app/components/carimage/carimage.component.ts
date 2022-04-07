@@ -69,7 +69,7 @@ export class CarimageComponent implements OnInit {
 
   getImageSource(carImage: CarImage): string {
     let url: string =
-      'https://localhost:44391/Uploads/Images/' + carImage.imagePath;
+      'https://aoprojectslive.xyz/Uploads/Images/' + carImage.imagePath;
     console.log(' ImageSource Çalıştı URL' + url);
     return url;
   }

@@ -89,7 +89,6 @@ export class ListCarComponent implements OnInit {
       this.rentalService.checkRentalByCarId(this.cars[i].carID).subscribe((response)=>{
 
         carOK=response.success;
-      })
         this.carImageService
         .getCarImageByCarId(this.cars[i].carID)
         .subscribe((response) => {
@@ -116,6 +115,8 @@ export class ListCarComponent implements OnInit {
           this.carList.push(indexCar);
         });
 
+      })
+       
      
      
       
@@ -132,7 +133,7 @@ export class ListCarComponent implements OnInit {
 
 
   setPath(path: string) {
-    return 'https://localhost:44391/Uploads/Images/' + path;
+    return 'https://aoprojectslive.xyz/Uploads/Images/' + path;
   }
 
  
