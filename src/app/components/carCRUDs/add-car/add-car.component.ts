@@ -41,6 +41,7 @@ export class AddCarComponent implements OnInit {
     DepositFee: new FormControl(null, [Validators.required]),
     CarModel: new FormControl('', [Validators.required]),
     CarRate: new FormControl(null, [Validators.required]),
+    CreditScore: new FormControl(null,[Validators.required])
   });
   imageSrc: string = '';
 

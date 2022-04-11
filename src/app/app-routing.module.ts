@@ -13,6 +13,8 @@ import { UpdateCarComponent } from './components/carCRUDs/update-car/update-car.
 import { LoginComponent } from './components/Auths/login/login.component';
 import { RegisterComponent } from './components/Auths/register/register.component';
 import { LoginGuard } from './guards/login.guard';
+import { UserComponent } from './components/userProfile/user/user.component';
+import { UserMainComponent } from './components/userProfile/user-main/user-main.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent ,canActivate:[LoginGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserMainComponent },
 ];
 
 @NgModule({

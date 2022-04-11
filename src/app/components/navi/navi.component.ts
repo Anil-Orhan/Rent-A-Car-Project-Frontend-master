@@ -20,8 +20,11 @@ export class NaviComponent implements OnInit {
   ) {}
   userFullName!: string;
   userGetCheck!: boolean;
+  userId!:string;
   ngOnInit(): void {
     this.userFullName=<string>  localStorage.getItem("userfullname")
+    this.userId=<string>localStorage.getItem("userId");
+
     
   }
 
@@ -91,20 +94,21 @@ export class NaviComponent implements OnInit {
      
    }
    else{return false}
-          // this.userService.getUsers().subscribe(response=>{
-          //   let user=response.data.find(p=>p.email===localStorage.getItem("user"));
-          //   console.log(user)
-          //   this.userFullName =<string>user?.firstName;
-           
-            
-          
-          
-          
-          // })
+    
+}
+getUserId(){ 
 
     
-              
+  this.userId=<string>  localStorage.getItem("userId")
 
+  if (this.userId!=null||this.userId!=undefined||this.userId!='') {
+
+
+   return true
+    
+  }
+  else{return false}
+   
 }
 
 }

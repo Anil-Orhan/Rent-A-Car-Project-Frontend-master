@@ -8,11 +8,11 @@
             <div class="d-flex flex-column">
     
                 <div class="  d-flex align-items-center justify-content-between text "> <span class="">Kiralama Bedeli </span> <span
-                    class=""><span class="ps-1">{{(rental.BillingPrice/1.18).toFixed(1)}} ₺</span></span> </div>
+                    class=""><span class="ps-1">{{(rental.billingPrice/1.18).toFixed(1)}} ₺</span></span> </div>
                 <div class="d-flex align-items-center justify-content-between text"> <span class="">KDV </span> <span
-                        class=""><span class="ps-1">{{(rental.BillingPrice-(rental.BillingPrice/1.18)).toFixed(1)}} ₺</span></span> </div>
+                        class=""><span class="ps-1">{{(rental.billingPrice-(rental.billingPrice/1.18)).toFixed(1)}} ₺</span></span> </div>
                 <div class=" fw-bolder d-flex align-items-center justify-content-between text mb-4"> <span>Fatura Bedeli</span> <span
-                        class=""><span class="ps-1">{{rental.BillingPrice.toFixed(1)}} ₺</span></span> </div>
+                        class=""><span class="ps-1">{{rental.billingPrice.toFixed(1)}} ₺</span></span> </div>
                 <div class="border-bottom mb-4"></div>
                 <div class="d-flex flex-column mb-4"> <span class="far fa-file-alt text"><span class="ps-2">Müşteri
                             ID:</span></span> <span class="ps-3">SN8478042099</span> </div>

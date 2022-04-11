@@ -32,6 +32,7 @@ export class CarimageComponent implements OnInit {
     minDrivingLicence: 0,
     depositFee: 0,
     carRate: 0,
+    creditScore:0
   };
   rentDate: Date = new Date();
   returnDate: Date | undefined;

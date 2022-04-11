@@ -53,6 +53,7 @@ export class UpdateCarComponent implements OnInit {
       DepositFee: new FormControl(this.selectedCar.depositFee, [Validators.required]),
       CarModel: new FormControl(this.selectedCar.carModel, [Validators.required]),
       CarRate: new FormControl(this.selectedCar.carRate, [Validators.required]),
+      CreditScore: new FormControl(this.selectedCar.creditScore,[Validators.required])
     });
     
 

@@ -18,12 +18,23 @@ export class UserService {
     let newPath=this.apiUrl+"getall"
     return this.httpClient.get<ListResponseModel<UserModel>>(newPath);
   }
-  getUserByMail(email:string){
+  getUserByMail(userMail:string){
 
     let newPath=this.apiUrl+"getbymail"
-    console.log("GET USER BY MAIL")
+
     
-    this.getUsers().subscribe(response=>{this.activeUser!=response.data.find(P=>P.email===email); console.log(this.activeUser)});
-    return this.activeUser
+    // this.getUsers().subscribe(response=>{this.activeUser=<UserModel>response.data.find(P=>P.email===userMail); });
+
+    
+    return this.httpClient.post<string>(newPath,userMail);
+  }
+  getById(userID:number)
+  
+  {
+    console.log("USER ID"+userID)
+
+    let newPath=this.apiUrl+"getbyid?id="+userID;
+
+    return this.httpClient.get<EntityResponseModel<UserModel>>(newPath);
   }
 }

@@ -19,6 +19,9 @@ import { Rental } from 'src/app/models/rental';
 import { PayService } from 'src/app/services/pay.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { ToastrService } from 'ngx-toastr';
+import { FindeksService } from 'src/app/services/findeks.service';
+import { UserService } from 'src/app/services/user.service';
+import { UserModel } from 'src/app/models/userModel';
 
 @Component({
   selector: 'app-cardetail',
@@ -59,6 +62,7 @@ export class CardetailComponent implements OnInit {
     minDrivingLicence: 0,
     depositFee: 0,
     carRate: 0,
+    creditScore:0
   };
   carDetail: CarDetails = {
     carID: 0,
@@ -90,7 +94,9 @@ export class CardetailComponent implements OnInit {
     private insuranceService: InsuranceService,
     private payService: PayService,
     private rentalService: RentalService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private findeksService:FindeksService,
+    private userService:UserService
   ) {
     // customize default values of carousels used by this component tree
     config.showNavigationArrows = true;
@@ -108,16 +114,21 @@ export class CardetailComponent implements OnInit {
       this.activatedRoute.params.subscribe((params) => {
         this.getCarImageByCarId(params['carID']);
         this.getCarById(this.car.carID);
+        
        
       });
+      
     });
     this.getInsurance(); //Sigortaları Getir
     this.setInsurancePrice(0, 5); //Default Sigorta Bilgileri
+    this.checkFindeks()
+  
   }
 
   getCarByID(carID: number) {
     this.carService.getCarByID(carID).subscribe((response) => {
       this.car = response.data;
+      console.log(response.data)
     });
   }
   getCarDetails(carID: number) {
@@ -169,16 +180,25 @@ export class CardetailComponent implements OnInit {
   }
 
   setRental() {
-    this.rental = {
-      RentalID: 0,
-      CarID: this.car.carID,
-      CustomerID: 0,
-      BillingPrice: this.totalPrice * 1.18,
-      InsurancesID: this.carService.insuranceId,
-      RentDate: this.carService.rentDate,
-      ReturnDate: this.carService.returnDate,
+  
+    
+    if(this.userFindeksScore>this.car.creditScore)
+    { 
+      
+      this.rental = {
+      rentalID: 0,
+      carID: this.car.carID,
+      customerID: parseInt(localStorage.getItem("userId")!) ,
+      billingPrice: this.totalPrice * 1.18,
+      insuranceID: this.carService.insuranceId,
+      rentDate: this.carService.rentDate,
+      returnDate: this.carService.returnDate,
     };
-    this.payService.setActiveRental(this.rental);
+    this.payService.setActiveRental(this.rental);}
+    else{this.toastrService.error("Findeks puanınız yetersiz. Lütfen findeks puanınıza uygun bir araç seçimi yapınız.","Başarısız");
+    this.toastrService.warning("Kredi puanınız "+this.userFindeksScore+" gereken puan : "+this.car.creditScore,)}
+
+ 
    
   }
 
@@ -187,10 +207,11 @@ export class CardetailComponent implements OnInit {
   payOK:boolean=false;
 
   checkRental() {
+    
     let rental1 = this.rental;
-    rental1.CarID = this.car.carID;
+    rental1.carID = this.car.carID;
 
-    rental1.RentDate = this.carService.rentDate;
+    rental1.rentDate = this.carService.rentDate;
 
     this.rentalService.checkRentalDate(rental1).subscribe((response) => {
       this.message = response.message;
@@ -207,6 +228,29 @@ export class CardetailComponent implements OnInit {
     });
     
   }
+userFindeksScore!:number;
 
+  checkFindeks(){
+
+
+  
+  let id= localStorage.getItem("userId")!;
+ 
+
+   this.userService.getById(parseInt(id)).subscribe((response)=>{
+   
+   
+    this.findeksService.getFindeksScore(response.data).subscribe((responseFindeks)=>{
+
+       this.userFindeksScore=responseFindeks.data;
+    }) 
+   })
+
+   
+
+
+     
+
+  }
  
 }

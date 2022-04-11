@@ -46,14 +46,19 @@
           Giriş Yap
         </button>
       </form>
-      <div *ngIf="checkLogin()!=false" class="d-inline-block text-center mx-5 px-3" ngbDropdown #myDrop="ngbDropdown">
-        <i type="submit" class="fa-solid fa-circle-user me-2 bg-transparent border-0 fs-2 text-light" id="dropdownManual"  (click)="myDrop.open()"></i><br>
-        <i *ngIf=" getUser()===true" class="text-light fw-light fs-6" >{{userFullName}}</i>
-        <div ngbDropdownMenu  aria-labelledby="dropdownManual">
-          <button ngbDropdownItem>Profil</button>
-          <button ngbDropdownItem>Kiralama Geçmişim</button>
+      <div *ngIf="checkLogin()!=false" class="d-inline-block text-center " ngbDropdown #myDrop="ngbDropdown">
+        <i type="submit" class="fa-solid fa-circle-user bg-transparent border-0 fs-1 text-light" id="dropdownManual"  (click)="myDrop.open()"></i><br>
+      
+        <div ngbDropdownMenu  aria-labelledby="dropdownManual " class="text-center text-dark dropdown-menu-xl-end px-3">
+          <div *ngIf=" getUser()===true"  class=" text-dark   text-center  m-0 fw-normal " >{{userFullName}}</div>
+          <div *ngIf=" getUserId()===true" class=" text-muted  text-center " >Müşteri No :{{userId}}</div>
+          
+
           <hr>
-          <button ngbDropdownItem routerLink="" (click)="logout()">Çıkış Yap</button>
+          <button class="menuItem" routerLink="profile" ngbDropdownItem>Profil</button>
+          <button class="menuItem" ngbDropdownItem>Kiralama Geçmişim</button>
+          <hr>
+          <button ngbDropdownItem routerLink="" class="menuItem px-4" (click)="logout()">Çıkış Yap</button>
         </div>
       </div>
       

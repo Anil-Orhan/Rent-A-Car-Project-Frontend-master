@@ -1,0 +1,63 @@
+<h1 class="fw-light text-center fs-2 mt-5"> Kullanıcı İşlemleri Paneli</h1>
+<hr class="text-muted">
+
+
+<div class="row">
+    <div class="col-4">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a
+        [ngClass]="checkMenuItemIsActive('profile')" 
+          
+          id="list-home-list"
+          data-mdb-toggle="list"
+          (click)="setKey('profile')"
+          role="tab"
+          aria-controls="list-home"
+          >Profil</a
+        >
+        <a
+          [ngClass]="checkMenuItemIsActive('history')"
+          id="list-profile-list"
+          data-mdb-toggle="list"
+          (click)="setKey('history')"
+          role="tab"
+          aria-controls="list-profile"
+          >Kiralama Geçmişi</a
+        >
+        <a
+        [ngClass]="checkMenuItemIsActive('cards')"
+          id="list-messages-list"
+          data-mdb-toggle="list"
+          (click)="setKey('cards')"
+          role="tab"
+          aria-controls="list-messages"
+          >Kayıtlı Kredi Kartları</a
+        >
+        <a
+        [ngClass]="checkMenuItemIsActive('preferences')"
+          id="list-settings-list"
+          data-mdb-toggle="list"
+            (click)="setKey('preferences')"
+          role="tab"
+          aria-controls="list-settings"
+          >Tercihler</a
+        >
+      </div>
+    </div>
+    <div class="col-8">
+      <div>
+       
+         <app-user  *ngIf="key==='profile'"></app-user>
+        
+        
+         <app-rent-history  *ngIf="key==='history'"></app-rent-history>
+       
+        
+          <app-saved-cards  *ngIf="key==='cards'"></app-saved-cards>
+       
+        
+          <app-preferences *ngIf="key==='preferences'"></app-preferences>
+     
+      </div>
+    </div>
+  </div>

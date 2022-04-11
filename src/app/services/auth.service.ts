@@ -5,6 +5,7 @@ import { EntityResponseModel } from '../models/entityResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { RegisterModel } from '../models/registerModel';
 import { ToastrService } from 'ngx-toastr';
+import { UserModel } from '../models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   expirationTime!:Date;
   apiUrl = 'https://aoprojectslive.xyz/api/Auth/';
   constructor(private httpClient:HttpClient,private toastrService:ToastrService) { }
-
+  userModel!:UserModel;
   login(loginModel:LoginModel){
     return this.httpClient.post<EntityResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
   }

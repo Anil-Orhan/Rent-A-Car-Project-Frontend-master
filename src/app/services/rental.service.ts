@@ -10,7 +10,7 @@ import { EntityResponseModel } from '../models/entityResponseModel';
   providedIn: 'root',
 })
 export class RentalService {
-  apiUrl = 'https://aoprojectslive.xyz/api/Rentals/';
+  apiUrl = 'https://aoprojectslive.xyz/api/rentals/';
  
   constructor(private httpClient: HttpClient) {}
 
@@ -25,11 +25,19 @@ export class RentalService {
       newPath
     );
   }
+  getRentalsByUserId(userId:string): Observable<ListResponseModel<Rental>> {
+    let newPath=this.apiUrl+"getrentalsbyuserid?id="+userId
+    return this.httpClient.get<ListResponseModel<Rental>>(
+      
+      newPath
+    );
+  }
   addRental(rental:Rental): Observable<ListResponseModel<Rental>>
   {
   
     let newPath=this.apiUrl+"add"
-    return this.httpClient.post<ListResponseModel<Rental>>(newPath,rental);
+  
+   return  this.httpClient.post<ListResponseModel<Rental>>(newPath,rental);;
 
   }
   checkRentalDate(rental:Rental): Observable<EntityResponseModel<Rental>>
@@ -41,19 +49,19 @@ export class RentalService {
   }
   
 rental:Rental={
-  RentalID: 0,
-  CarID: 0,
-  CustomerID: 0,
-  BillingPrice: 0,
-  InsurancesID: 0,
-  RentDate: new Date(),
-  ReturnDate: new Date()
+  rentalID: 0,
+  carID: 0,
+  customerID: 0,
+  billingPrice: 0,
+  insuranceID: 0,
+  rentDate: new Date(),
+  returnDate: new Date()
 };
   checkRentalByCarId(carId:number): Observable<ListResponseModel<Rental>>
   {
     let newPath=this.apiUrl+"checkrentalbycarid"
     
-      this.rental.CarID=carId;
+      this.rental.carID=carId;
 
      return this.httpClient.post<ListResponseModel<Rental>>(newPath,this.rental);
    

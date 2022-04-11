@@ -1,4 +1,12 @@
-<div class="container mt-2">
+
+
+
+
+<div class="container mt-3 p-3">
+  <i class="fa-solid fa-circle-info  position-sticky top-0 start-100 end-0  fs-4 " style="z-index: 5; color: rgb(1, 74, 102);"> 
+  <span class="fs-6"></span>
+
+  </i>
   <div class=" mx-5 mb-5">
     <div class="row">
       <div class="col-8">
@@ -104,13 +112,13 @@
             <li *ngIf="car.airConditioning" class="list-group-item">
               <div class="row">
                 <div class="col-6"><i class="text-muted">Klima :</i></div>
-                <div class="col-6">Var</div>
+                <div class="col-6">Var <i class="fa-regular fa-circle-check"></i></div>
               </div>
             </li>
             <li *ngIf="!car.airConditioning" class="list-group-item">
               <div class="row">
                 <div class="col-6"><i class="text-muted">Klima :</i></div>
-                <div class="col-6">Yok</div>
+                <div class="col-6">Yok <i class="fa-solid fa-circle-xmark text-success"></i></div>
               </div>
             </li>
             <li class="list-group-item">
@@ -136,13 +144,13 @@
             <li *ngIf="car.navigation" class="list-group-item">
               <div class="row">
                 <div class="col-6"><i class="text-muted">Navigasyon :</i></div>
-                <div class="col-6">Var</div>
+                <div class="col-6">Var <i class="fa-regular fa-circle-check"></i></div>
               </div>
             </li>
             <li *ngIf="!car.navigation" class="list-group-item">
               <div class="row">
                 <div class="col-6"><i class="text-muted">Navigasyon :</i></div>
-                <div class="col-6">Yok</div>
+                <div class="col-6">Yok <i class="fa-solid fa-circle-xmark text-success"></i></div>
               </div>
             </li>
 
@@ -160,6 +168,14 @@
                   <i class="text-muted">Min. Ehliyet Süresi :</i>
                 </div>
                 <div class="col-6">{{ car.minDrivingLicence }} Yıl</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-6">
+                  <i class="text-muted">Gerekli Kredi Puanı :</i>
+                </div>
+                <div class="col-6 "><p class="text-success fw-normal">{{ car.creditScore }} </p> </div>
               </div>
             </li>
           </ul>
@@ -207,3 +223,5 @@
   </div>
   <hr />
 </div>
+
+

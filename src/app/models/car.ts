@@ -17,4 +17,5 @@ export interface Car {
   minDrivingLicence: number;
   depositFee: number;
   carRate: number;
+  creditScore:number;
 }

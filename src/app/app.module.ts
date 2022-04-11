@@ -50,6 +50,11 @@ import { RegisterComponent } from './components/Auths/register/register.componen
 import { LoginComponent } from './components/Auths/login/login.component';
 import { ForgetpasswordComponent } from './components/Auths/forgetpassword/forgetpassword.component'; // lib
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserComponent } from './components/userProfile/user/user.component';
+import { SavedCardsComponent } from './components/userProfile/saved-cards/saved-cards.component';
+import { PreferencesComponent } from './components/userProfile/preferences/preferences.component';
+import { RentHistoryComponent } from './components/userProfile/rent-history/rent-history.component';
+import { UserMainComponent } from './components/userProfile/user-main/user-main.component';
 
 
 
@@ -87,6 +92,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RegisterComponent,
     LoginComponent,
     ForgetpasswordComponent,
+    UserComponent,
+    SavedCardsComponent,
+    PreferencesComponent,
+    RentHistoryComponent,
+    UserMainComponent,
     
   ],
   imports: [

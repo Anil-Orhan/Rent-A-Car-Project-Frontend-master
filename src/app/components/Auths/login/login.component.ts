@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("expiration",response.data.expiration)
         this.userService.getUsers().subscribe(response=>{
           let user=response.data.find(p=>p.email===loginModel.email);
+          console.log(user)
           localStorage.setItem("userfullname",user?.firstName+" "+user?.lastName)
+          localStorage.setItem("userId",user?.userID+"");
         
         })
        
